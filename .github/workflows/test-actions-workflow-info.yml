@@ -1,0 +1,62 @@
+name: test-actions-workflow-info
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Workflow name'
+        default: 'occupy'
+        required: true
+      branch:
+        description: 'branch'
+        default: 'main'
+        required: true
+      repository:
+        description: 'repository'
+        default: 'onshape/test-actions'
+        required: true
+      conclusion:
+        description: 'conclusion'
+        default: ''
+      status:
+        description: 'status'
+        default: ''
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: setup
+    steps:
+      - id: workflow-info
+        uses: onshape/actions-workflow-info@v7
+        with:
+          name: ${{ github.event.inputs.name }}
+          branch: ${{ github.event.inputs.branch }}
+          repository: ${{ github.event.inputs.repository }}
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+          conclusion: ${{ github.event.inputs.conclusion }}
+          status: ${{ github.event.inputs.status }}
+      - id: new-workflow-info
+        uses: onshape/actions-workflow-info@v7.1
+        with:
+          name: ${{ github.event.inputs.name }}
+          branch: ${{ github.event.inputs.branch }}
+          repository: ${{ github.event.inputs.repository }}
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+          conclusion: ${{ github.event.inputs.conclusion }}
+          status: ${{ github.event.inputs.status }}
+      - name: Test
+        run: |
+          echo "old:"
+          echo "running-workflows-count ${{ steps.workflow-info.outputs.running-workflows-count }}"
+          echo "running-jobs-count ${{ steps.workflow-info.outputs.running-jobs-count }}"
+          echo "last-build-run-number ${{ steps.workflow-info.outputs.last-build-run-number }}"
+          echo "last-build-sha ${{ steps.workflow-info.outputs.last-build-sha }}"
+          echo "workflow-id ${{ steps.workflow-info.outputs.workflow-id }}"
+          echo ""
+          echo "new:"
+          echo "running-workflows-count ${{ steps.new-workflow-info.outputs.running-workflows-count }}"
+          echo "running-jobs-count ${{ steps.new-workflow-info.outputs.running-jobs-count }}"
+          echo "last-build-run-number ${{ steps.new-workflow-info.outputs.last-build-run-number }}"
+          echo "last-build-sha ${{ steps.new-workflow-info.outputs.last-build-sha }}"
+          echo "workflow-id ${{ steps.new-workflow-info.outputs.workflow-id }}"

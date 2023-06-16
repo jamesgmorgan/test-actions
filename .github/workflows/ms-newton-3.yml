@@ -1,0 +1,15 @@
+name: ms-newton-4
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ms-newton-4
+    name: setup
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          ifconfig -a

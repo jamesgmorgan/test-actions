@@ -1,0 +1,24 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+env:
+  USER: ${{ github.actor }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Hello
+        env:
+          MYVAR: "lower-jmorgan"
+        run: |
+          set -x
+          df -h 2>&1
+          echo -e "\n\n"
+          free -h

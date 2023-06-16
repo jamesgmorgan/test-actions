@@ -1,0 +1,15 @@
+# Placeholder workflow
+
+name: test-sked5m
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: "*/5 * * * *"
+
+jobs:
+  build:
+    runs-on: ms-build-2
+    steps:
+      - name: Test
+        run: echo "$(hostname) at $(date +'%Y-%m-%d %H:%M:%S') $(date +%s)" | tee -a ~/timestamp.txt

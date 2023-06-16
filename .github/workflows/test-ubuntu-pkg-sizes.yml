@@ -1,0 +1,21 @@
+name: test18
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Run
+        run: |
+          set -x
+          du -sh /usr/share/*
+          printf "\n\npackages \n\n" 2>&1
+          sudo dpkg -l
+          printf "\n\nTop 100 sizes \n\n" 2>&1
+          dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -n 10

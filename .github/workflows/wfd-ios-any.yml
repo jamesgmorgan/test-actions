@@ -1,0 +1,32 @@
+---
+
+name: wfd-ios-any
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger-build:
+    name: Run ios-any
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+        shell: bash
+        run: |
+          set -x
+          echo "TEST_BRANCH=master" >> $GITHUB_ENV
+          echo "TEST_STACK=demo-c" >> $GITHUB_ENV
+      - name: Run
+        uses: onshape/actions-workflow-dispatch@v1.2.2
+        with:
+          workflow: ios-any
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+          ref: ${{ env.TEST_BRANCH }}
+          inputs: >
+            {
+            "test-stack":"${{ env.TEST_STACK }}",
+            "next-wf":"update-gencode-merge",
+            "next-wf-inputs":"{\"test-branch\":\"${{ env.TEST_BRANCH }}\"}",
+            "next-wf-ref":"${{ needs.setup.outputs.branch }}"
+            }

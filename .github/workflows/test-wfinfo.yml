@@ -1,0 +1,40 @@
+name: test-wfinfo
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Workflow name'
+        default: 'ios'
+        required: true
+      branch:
+        description: 'branch'
+        default: 'master'
+        required: true
+      repository:
+        description: 'repository'
+        default: 'onshape/test-actions'
+        required: true
+      conclusion:
+        description: 'conclusion'
+        default: ''
+      status:
+        description: 'status'
+        default: ''
+
+jobs:
+  trigger-build:
+    runs-on: ubuntu-latest
+    steps:
+    - id: workflow-info
+      uses: onshape/actions-workflow-info@v7
+      with:
+        name: ${{ github.event.inputs.name }}
+        branch: ${{ github.event.inputs.branch }}
+        repository: ${{ github.event.inputs.repository }}
+        token: ${{ secrets.ONSHAPE_REPO_PAT }}
+        conclusion: ${{ github.event.inputs.conclusion }}
+        status: ${{ github.event.inputs.status }}
+    - name: Test
+      run: |
+        echo "last-build-sha ${{ steps.workflow-info.outputs.last-build-sha }} running-jobs-count ${{ steps.workflow-info.outputs.running-jobs-count }}"

@@ -1,0 +1,25 @@
+name: gotest
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.17.x'
+      - name: Hello
+        run: |
+          set -x
+          cd src/go
+          go version 2>&1
+          go build -v hello.go 2>&1
+          ls -l 2>&1
+          ./hello 2>&1

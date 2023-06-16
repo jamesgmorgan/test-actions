@@ -1,0 +1,69 @@
+---
+
+name: restart-offline-runners
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry-run: 0=false, 1=true'
+        required: true
+#  schedule:
+#    - cron: "15 * * * *"
+
+env:
+  SLACK_CHANNEL: builds-ga
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install SSH key
+        uses: onshape/ssh-key-action@v2
+        with:
+          key: ${{ secrets.BUILDMASTER_SSH_KEY }}
+          name: id_rsa
+          known_hosts: unnecessary
+      - name: Check and restart offline nodes
+        run: |
+          set -x
+          # Set input for scheduled event
+          [[ "${{ github.event.inputs.dry-run }}" == "" ]] && dryRun="0" || dryRun="${{ github.event.inputs.dry-run }}"
+
+          . buildenv.bash --offline
+          restarted_runners=$(./actions/restart-offline-runners.bash "$dryRun")
+          [[ "${restarted_runners}" != "" ]] && echo "RESTARTED_RUNNERS=${restarted_runners}" >> $GITHUB_ENV
+
+          # Remove the private key
+          rm -rf ~/.ssh
+        env:
+          ONSHAPE_ADMIN_PAT: ${{ secrets.ONSHAPE_ADMIN_PAT }}
+      - name: Slack restarted nodes
+        if: ${{ env.RESTARTED_RUNNERS != '' }}
+        uses: onshape/actions-slack-action@master
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}
+        with:
+          args: >-
+            {\"channel\":\"${{ env.SLACK_CHANNEL }}\",
+            \"text\":\":warning: Restarted runners: ${{ env.RESTARTED_RUNNERS }}\n
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}
+
+  Slack:
+    if: failure()
+    name: Slack
+    needs:
+      - check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify failed
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ env.SLACK_CHANNEL }}
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

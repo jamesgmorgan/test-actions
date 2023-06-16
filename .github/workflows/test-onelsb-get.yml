@@ -1,0 +1,22 @@
+name: test-onelsb-get
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: call actions-lsb
+        id: config
+        uses: onshape/actions-lsb@v1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.ONSHAPE_CI_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ONSHAPE_CI_AWS_SECRET_ACCESS_KEY }}
+        with:
+          operation: "get"
+          ownerRepo: "${{ github.event.organization.login }}/ios"
+          workflowBranch: "ios-test-demo-c/rel-1.123"
+      - name: Print item
+        run: |
+          echo "lsb is ${{ steps.config.outputs.getLsb }}"

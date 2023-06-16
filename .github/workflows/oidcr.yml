@@ -1,0 +1,30 @@
+---
+
+name: oidcr
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+
+env:
+  AWS_DEFAULT_REGION: us-west-2
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: onshape/actions-configure-aws-credentials@v2
+        with:
+          role-to-assume: "arn:aws:iam::994486372156:role/github-onshape-oidc-role"
+          role-session-name: OIDCSession
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+      - name: List
+        run: |
+            aws s3 ls onshape-dev-static-artifacts-us-west-2/com/

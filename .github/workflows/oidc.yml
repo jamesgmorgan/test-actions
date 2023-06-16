@@ -1,0 +1,24 @@
+name: oidc
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+
+env:
+  AWS_DEFAULT_REGION: us-west-2
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: onshape/actions-configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.CODEBUILD_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CODEBUILD_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+      - name: List
+        run: |
+            aws s3 ls onshape-dev-static-artifacts-us-west-2/com/

@@ -1,0 +1,33 @@
+name: test-actions-branch-info
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'repo'
+        default: 'ios'
+        required: true
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: setup
+    steps:
+      - id: branch-info
+        uses: onshape/actions-branch-info@v1
+        with:
+          branch: master
+          repository: onshape/${{ github.event.inputs.repo }}
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - id: new-branch-info
+        uses: onshape/actions-branch-info@v1.1
+        with:
+          branch: master
+          repository: onshape/${{ github.event.inputs.repo }}
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - id: config
+        shell: bash
+        run: |
+          set -x
+          echo "head-sha=${{ steps.branch-info.outputs.head-sha }}"
+          echo "head-sha=${{ steps.new-branch-info.outputs.head-sha }} NEW"

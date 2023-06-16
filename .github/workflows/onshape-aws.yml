@@ -1,0 +1,27 @@
+# Placeholder workflow
+
+name: onshape-aws
+
+on:
+  workflow_dispatch:
+
+jobs:
+  aws-ssm-to-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: aws-ssm-to-env
+        uses: onshape/actions-aws-ssm-to-env@master
+        env:
+          AWS_REGION: "us-east-2"
+          AWS_ACCESS_KEY_ID: ${{ secrets.ONSHAPE_CI_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ONSHAPE_CI_AWS_SECRET_ACCESS_KEY }}
+        with:
+          ssm_parameter_list: 'test-actions-aws-ssm-to-env'
+      - name: results
+        run: |
+          set -x
+          if [[ "$AWS_SSM_TEST-ACTIONS-AWS-SSM-TO-ENV" == "Just a test." ]]; then
+              echo "SSM secret is correct"
+          fi
+          echo "Results"
+          printenv | sort

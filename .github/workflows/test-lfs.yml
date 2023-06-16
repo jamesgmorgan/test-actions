@@ -1,0 +1,50 @@
+name: test-lfs
+
+on:
+  workflow_dispatch:
+    inputs:
+      secs:
+        description: 'GitHub org.  *** WARNING *** running this workflow will update production repos.'
+        default: '1'
+        required: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      slack-channel: ${{ github.event.repository.name }}-builds
+    name: setup
+    steps:
+      - name: Inputs
+        shell: bash
+        run: |
+          cat << 'EOF' | jq -r 'to_entries[] | "\(.key): \(.value)"'
+          ${{ toJSON(github.event.inputs) }}
+          EOF
+      - id: config
+        shell: bash
+        run: |
+          set -x
+          printf "\n\nTest\n\n"
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - setup
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Hello
+        run: |
+          set -x
+          #dpkg -l | grep lfs
+          #[[ "$GITHUB_ACTIONS" == "true" ]] && sudo apt-get -y remove git-lfs
+          git config --list
+          git clone https://${TOKEN_PAT}@github.com/onshape/documentation.git
+          du -sh ./documentation
+
+        env:
+          TERM: dumb
+          TOKEN_PAT: ${{ secrets.ONSHAPE_REPO_PAT }}

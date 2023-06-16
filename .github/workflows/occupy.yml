@@ -1,0 +1,26 @@
+# Placeholder workflow
+
+name: occupy
+
+on:
+  workflow_dispatch:
+    inputs:
+      node:
+        description: 'Node'
+        default: 'ip-10-86-9-151'
+        required: true
+      sleep:
+        description: 'Sleep secs'
+        default: '2'
+        required: true
+
+jobs:
+  build:
+    runs-on: ${{ github.event.inputs.node }}
+    steps:
+    - name: Test
+      run: |
+        echo "Environment:"
+        printenv | sort
+        echo "Sleeping for ${{ github.event.inputs.sleep }}"
+        sleep ${{ github.event.inputs.sleep }}

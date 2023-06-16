@@ -1,0 +1,25 @@
+name: jirasync
+
+on:
+  workflow_dispatch:
+    inputs:
+      use-emoji:
+        type: boolean
+        description: Include 🎉🤣 emojis
+      sleep:
+        description: 'Sleep secs'
+        default: '3600'
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run JiraSync
+        run: |
+          set -x
+          echo "concurrency group name is ${{ github.workflow }}"
+          echo "Sleeping for ${{ github.event.inputs.sleep }}"
+          sleep ${{ github.event.inputs.sleep }}

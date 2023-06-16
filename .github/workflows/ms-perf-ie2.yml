@@ -1,0 +1,15 @@
+name: ms-perf-ie2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ms-perf-ie2
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_REF"
+          echo "$GITHUB_CONTEXT"

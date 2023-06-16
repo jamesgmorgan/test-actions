@@ -1,0 +1,35 @@
+name: jirasynccall
+
+on:
+  workflow_dispatch:
+    inputs:
+      sleep:
+        description: 'Sleep secs'
+        default: '600'
+#  schedule:
+#    - cron: '0 */3 * * *'
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run JiraSync
+        run: |
+          set -x
+          secs="${{ github.event.inputs.sleep }}"
+          [[ "$secs" == "" ]] && secs="600"
+          echo "concurrency group name is ${{ github.workflow }}"
+          echo "Sleeping for ${{ github.event.inputs.sleep }}"
+          sleep "$secs"
+      - name: Run myself again
+        uses: onshape/actions-workflow-dispatch@v1.2.2
+        with:
+          workflow: ${{ github.workflow }}
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+          inputs: >
+            {
+            "sleep": "${{ github.event.inputs.sleep }}"
+            }

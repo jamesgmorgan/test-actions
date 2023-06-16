@@ -1,0 +1,22 @@
+name: test-ghmac
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Run
+        run: |
+          set -x
+          sw_vers 2>&1
+          aws --version 2>&1
+          df -h 2>&1
+          echo "Num CPU: $(sysctl -n hw.ncpu)" 2>&1
+          echo "RAM: $(sysctl hw.memsize)" 2>&1
+          /usr/sbin/system_profiler SPHardwareDataType 2>&1

@@ -1,0 +1,33 @@
+name: setup-python
+
+on:
+  workflow_dispatch:
+    inputs:
+      secs:
+        description: 'Secs'
+        default: '1'
+        required: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-20.04
+    name: setup
+    steps:
+      - name: Run
+        shell: bash
+        run: |
+          set -x
+          pip list
+          echo "Py3"
+          pip3 list
+          ansible-playbook --version
+          type pip pip3
+          ls -l /usr/bin/pip
+          ls -l /usr/bin/pip3
+          echo pip
+          cat /usr/bin/pip
+          echo pip3
+          cat /usr/bin/pip3
+          echo "================================="
+          python2 -V
+          type python2

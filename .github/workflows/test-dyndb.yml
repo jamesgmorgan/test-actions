@@ -1,0 +1,27 @@
+name: test-dyndb
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get DynamoDB Item
+        id: config
+        uses: onshape/actions-dynamodb-actions@v1.2.1
+        env:
+          AWS_DEFAULT_REGION: us-west-2
+          AWS_REGION: us-west-2
+          AWS_ACCESS_KEY_ID: ${{ secrets.ONSHAPE_CI_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ONSHAPE_CI_AWS_SECRET_ACCESS_KEY }}
+        with:
+          operation: get
+          region: us-west-2
+          table: actions-lsb
+          key: |
+            { "repo": "ios", "workflowBranch": "ios-test-demo-c/rel-1.122" }
+      - name: Print item
+        run: |
+          lsb=$(jq '.lsb' <<< '${{ steps.config.outputs.item }}')
+          echo "lsb is $lsb"

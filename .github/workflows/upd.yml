@@ -1,0 +1,27 @@
+name: upd
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Hello
+        run: |
+          set -x
+          echo "$JIRASYNC_TOKEN" > test.txt
+          tar zcvf test.tgz test.txt
+        env:
+          JIRASYNC_TOKEN: ${{ secrets.JIRASYNC_TOKEN }}
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: upd-artifacts
+          path: |
+            test.tgz
+          retention-days: 1

@@ -1,0 +1,19 @@
+name: test-onelsb-put
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: call actions-lsb
+        uses: onshape/actions-lsb@v1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.ONSHAPE_CI_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ONSHAPE_CI_AWS_SECRET_ACCESS_KEY }}
+        with:
+          operation: "put"
+          ownerRepo: "${{ github.event.organization.login }}/ios"
+          workflowBranch: "ios-test-demo-c/rel-1.120"
+          putLsb: "f14eca17dd0d005a84e5a5596b10e326853d034e"

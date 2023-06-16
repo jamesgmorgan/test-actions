@@ -1,0 +1,19 @@
+name: test-dyncli
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get DynamoDB Item
+        run: |
+          #aws dynamodb get-item --table-name actions-lsb --key '{"repo": {"S": "ios"}, "workflowBranch": {"S": "ios-test-demo-c/rel-1.125"}}' | jq -r '.Item.lsb.S'
+          aws dynamodb get-item --table-name actions-lsb --key '{"repo": {"S": "${{ env.REPO }}"}, "workflowBranch": {"S": "ios-test-demo-c/rel-1.125"}}' | jq -r '.Item.lsb.S'
+        env:
+          AWS_DEFAULT_REGION: us-west-2
+          AWS_REGION: us-west-2
+          AWS_ACCESS_KEY_ID: ${{ secrets.ONSHAPE_CI_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ONSHAPE_CI_AWS_SECRET_ACCESS_KEY }}
+          REPO: "ios"

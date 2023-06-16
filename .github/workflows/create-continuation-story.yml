@@ -1,0 +1,116 @@
+---
+
+name: create-continuation-story
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+    inputs:
+      STORY:
+        description: '📜 The JIRA story to resolve and from which to create a continuation story, ex: BEL-XXXXX'
+        required: true
+        default: 'BEL-6666'
+      DAYS_REMAINING:
+        description: '⏳ Remaining days (e.g. 1 to 7) needed for continuation story'
+        required: true
+        default: '7'
+      KICKOFF_MEETING:
+        description: '🤝🏼 Was there a kick-off mtg needed, was it held with UX and QA?'
+        required: true
+        type: choice
+        default: 'Done'
+        options:
+          - 'Select ...'
+          - Required
+          - Not needed
+          - Done
+      MOVE_ISSUE_LINKS:
+        description: '⏭️ Move open issue links to the continuation story?'
+        default: 'true'
+        type: boolean
+        required: true
+      COMMENT:
+        description: '💬 Explanation for the need of the continuation story. ex: Extended testing possible after this phase is complete.'
+        required: false
+
+env:
+  INPUTS_JSON: ${{ toJSON(github.event.inputs) }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}
+  SLACK_CHANNEL: jmorgan-builds
+  USER: ${{ github.actor }}
+
+# echo "DEBUG: ${{ toJSON(github.event.inputs) }}" 2>&1
+# inputs=$(echo ${{ toJSON(github.event.inputs) }} | jq -r 'to_entries[] | "\(.key): \(.value)"')
+# inputs=$(echo "${{ toJSON(github.event.inputs) }}" | jq -r 'to_entries[]')
+#          inputs="$(echo "${{ toJSON(github.event.inputs) }}" | tr -d '\n' | tr '  ' ' ')"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      inputs: ${{ steps.config.outputs.inputs }}
+    name: Setup
+    steps:
+      - id: config
+        shell: bash
+        run: |
+          set -x
+          inputs="$(echo "$INPUTS_JSON" | tr -d '{}\n' | tr '[A-Z]' '[a-z]')"
+          echo "inputs=${inputs}" >> $GITHUB_OUTPUT
+
+  clone-jira:
+    runs-on: ubuntu-20.04
+    needs:
+      - setup
+    outputs:
+      error: ${{ steps.clone-jira.outputs.error }}
+      to_story: ${{ steps.clone-jira.outputs.to_story }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Clone Jira
+        id: clone-jira
+        shell: bash
+        run: |
+          #. ${{ github.workspace }}/buildSrc/workflows/clone-jira.bash
+          echo "to_story=BEL-19342" >> $GITHUB_OUTPUT
+          errmsg="ERROR: 'BEL-198430' status is 'Open' (you can only clone a story that's 'In Progress')"
+          echo "error=$errmsg" >> $GITHUB_OUTPUT
+          exit 1
+
+  move-support-ticket:
+    runs-on: ubuntu-20.04
+    needs:
+      - clone-jira
+    steps:
+      - name: Move Support Ticket
+        shell: bash
+        run: |
+          echo "move-support-ticket"
+          exit 0
+
+  slack:
+    if: always()
+    name: slack notify
+    needs:
+      - setup
+      - clone-jira
+      - move-support-ticket
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup
+        shell: bash
+        env:
+          CLONE_JIRA_ERROR: ${{ needs.clone-jira.outputs.error }}
+          CLONE_JIRA_RESULT: ${{ needs.clone-jira.result }}
+          CLONE_JIRA_STORY: ${{ needs.clone-jira.outputs.to_story }}
+          INPUTS: ${{ needs.setup.outputs.inputs }}
+          MOVE_TICKET_RESULT: ${{ needs.move-support-ticket.result }}
+          WORKFLOW_RUN_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        run: ./buildSrc/workflows/clone-jira-slack.bash
+      - name: Slack Notify
+        uses: onshape/actions-slack-action@master
+        with:
+          args: >-
+            {\"channel\":\"${{ env.SLACK_CHANNEL }}\",
+            \"text\":\"${{ env.SLACK_MESSAGE }}\"}

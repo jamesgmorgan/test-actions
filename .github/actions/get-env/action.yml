@@ -1,0 +1,14 @@
+name: 'get-env'
+description: 'get-env description'
+outputs:
+  ver:
+    description: "ver description"
+    value: ${{ steps.ver.outputs.ver }}
+runs:
+  using: "composite"
+  steps:
+    - id: ver
+      run: |
+        . buildSrc/tools/config/versions.bash
+        echo "::set-output name=ver::ios-xcode${XCODE_VER}"
+      shell: bash

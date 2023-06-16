@@ -1,0 +1,46 @@
+name: macstadium-runner-check
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry-run: 0=false, 1=true'
+        required: true
+
+env:
+  SLACK_CHANNEL: builds-ga
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install SSH key
+        uses: onshape/ssh-key-action@v2
+        with:
+          key: ${{ secrets.BUILDMASTER_SSH_KEY }}
+          name: id_rsa
+          known_hosts: unnecessary
+      - name: Check
+        run: |
+          set -x
+          cd ./actions
+          ./restart-all.bash ${{ github.event.inputs.dry-run }}
+          rm -rf ~/.ssh
+
+  Slack:
+    if: failure()
+    name: Slack
+    needs:
+      - check
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Notify failed
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ env.SLACK_CHANNEL }}
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

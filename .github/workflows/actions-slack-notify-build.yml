@@ -1,0 +1,35 @@
+name: actions-slack-notify-build
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: 'Slack channel'
+        default: ''
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: start
+        if: success()
+        id: slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ github.event.inputs.channel }}
+          status: STARTING
+          color: warning
+      - name: Running
+        run: sleep 5
+      - name: finish
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          message_id: ${{ steps.slack.outputs.message_id }}
+          channel: ${{ github.event.inputs.channel }}
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

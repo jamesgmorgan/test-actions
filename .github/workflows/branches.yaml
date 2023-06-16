@@ -1,0 +1,23 @@
+name: branches
+
+on:
+  workflow_dispatch:
+
+env:
+  USER: ${{ github.actor }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: rel-1.162
+      - name: Hello
+        run: |
+          set -x
+          echo "GITHUB_REF: $GITHUB_REF, GITHUB_SHA: $GITHUB_SHA" 2>&1
+          git rev-parse --abbrev-ref HEAD 2>&1
+          git log --pretty=format:'%H %aI %ae %s' -4 2>&1

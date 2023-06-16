@@ -1,0 +1,21 @@
+name: test-actions-build-branch-info
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      slack-channel: ${{ github.event.repository.name }}-builds
+    name: setup
+    steps:
+      - id: branch-info
+        uses: onshape/actions-build-branch-info@jmorgan-REN-658
+        with:
+          default-branch: "${{ github.event.repository.default_branch }}"
+      - id: config
+        shell: bash
+        run: |
+          set -x
+          echo "branches-json: ${{ steps.branch-info.outputs.branches-json }}"

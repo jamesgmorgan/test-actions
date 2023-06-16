@@ -1,0 +1,26 @@
+name: test-summary
+
+on:
+  workflow_dispatch:
+
+env:
+  USER: ${{ github.actor }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Hello
+        run: |
+          set -x
+          baselineFile="cppServer/BTcppServer/cachingTools/cacheables-baseline.json"
+          {
+           echo -e "This is the result\n\n"
+           echo -e '```\n'
+           git diff origin/jmorgan-test-summary "$baselineFile"
+           echo -e '```'
+          } | tee $GITHUB_STEP_SUMMARY

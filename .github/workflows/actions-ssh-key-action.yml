@@ -1,0 +1,47 @@
+name: actions-ssh-key-action
+
+on:
+  workflow_dispatch:
+    inputs:
+      secs:
+        description: 'Secs'
+        default: '2'
+        required: false
+
+env:
+  SLACK_CHANNEL: jmorgan-builds
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install SSH key
+        uses: onshape/actions-ssh-key-action@v2.4.0
+        with:
+          key: ${{ secrets.BUILDMASTER_SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: unnecessary
+      - name: Build
+        run: |
+          set -x
+          ls -l ~/.ssh
+          openssl dgst -sha256 ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no jenkins@208.52.182.206 ls /
+
+  Slack:
+    if: failure()
+    name: Slack
+    needs:
+      - build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Notify failed
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ env.SLACK_CHANNEL }}
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

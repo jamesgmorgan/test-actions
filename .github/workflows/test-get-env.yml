@@ -1,0 +1,21 @@
+name: test-get-env
+
+on: [ workflow_dispatch ]
+
+jobs:
+  run-get-env:
+    runs-on: ubuntu-latest
+    outputs:
+      name: ${{ steps.node-label.outputs.ver }}
+    name: get the node label
+    steps:
+      - uses: actions/checkout@v2
+      - id: node-label
+        uses: ./.github/actions/get-env
+
+  real_work:
+    runs-on: ubuntu-latest
+    needs: run-get-env
+    steps:
+    - name: Output
+      run: echo "RESULT ${{ needs.run-get-env.outputs.name }}"

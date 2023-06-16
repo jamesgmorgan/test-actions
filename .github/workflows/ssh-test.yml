@@ -1,0 +1,45 @@
+---
+
+name: ssh-test
+
+on:
+  workflow_dispatch:
+    inputs:
+      secs:
+        description: 'Secs'
+        default: '1'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH key
+        uses: onshape/actions-ssh-key-action@v2.4.0
+        with:
+          key: ${{ secrets.BUILDMASTER_SSH_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.BDP_KNOWN_HOSTS }}
+      - name: Hello
+        run: |
+          set -x
+          #eval $(ssh-agent -s)
+          #ssh-add ~/.ssh/id_rsa
+          #ssh-add -L || true
+          ssh jenkins@208.52.182.206 ls -l
+          ssh jenkins@208.52.182.206 id -a
+  slack:
+    if: failure()
+    name: Slack
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ needs.setup.outputs.slack-channel }}
+          status: SUCCESS
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

@@ -1,0 +1,24 @@
+name: actions-slack-action
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: 'Slack channel'
+        default: 'jmorgan-builds'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Timestamp
+        #run: echo "ts=$(date "+%H:%M.%S (%Y-%m-%d)")" >> $GITHUB_ENV
+        run: |
+          echo "ts=\n1. The rel-1.142 branch is closed. After the first build is successful it will be opened for precommit and check in.\n2. The master branch is open - precommit and check in!\n3. The following commits are after lsb/master (i.e. not in rel-1.142). Committers should review this list and cherry pick any necessary commits to rel-1.142, once it's open, following the usual process of review, precommit etc.\n\n*newton*\n\n5c01456973d 2021-12-29T22:12:07+05:30 jsamuel@ptc.com Ran gradle overrideTemplates\n93e74c7cdb2 2021-12-22T16:01:23+05:30 jsamuel@ptc.com Fix for BEL-176035\ne3784cf4b90 2021-12-21T11:28:13+05:30 jsamuel@ptc.com Bias -> Location\nd991046022b 2021-12-20T17:07:57+05:30 jsamuel@ptc.com Added V1671_VARIABLE_FILLET_BUG_FIXES\n79ac74875b2 2021-12-17T23:23:32+05:30 jsamuel@ptc.com Fix for BEL-176051\n31d068d54f4 2021-12-17T19:50:14+05:30 jsamuel@ptc.com Fix for BEL-175922\n" >> $GITHUB_ENV
+      - id: SlackMsg
+        uses: onshape/actions-slack-action@master
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}
+        with:
+          args: '{\"channel\":\"${{ github.event.inputs.channel }}\",\"text\":\":white_check_mark: ${{ env.ts }}\"}'

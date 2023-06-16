@@ -1,0 +1,25 @@
+name: tz
+
+on:
+  workflow_dispatch:
+    inputs:
+      tz:
+        description: "Runner 🚨 don't change any of these parameters unless you know what you're doing 🚨"
+        default: "sometihng"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Run
+        run: |
+          set -x
+          date 2>&1
+          export TZ=${{ github.event.inputs.tz }}
+          bdpDate="$(date --date="tomorrow" "+%b %d"), 3:00pm ET"
+          echo $bdpDate

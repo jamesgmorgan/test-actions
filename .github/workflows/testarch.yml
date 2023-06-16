@@ -1,0 +1,67 @@
+name: testarch
+
+on:
+  workflow_dispatch:
+    inputs:
+      secs:
+        description: 'Secs'
+        default: '1'
+        required: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-20.04
+    outputs:
+      slack-channel: ${{ github.event.repository.name }}-builds
+    name: setup
+    steps:
+      - name: Inputs
+        shell: bash
+        run: |
+          cat << 'EOF' | jq -r 'to_entries[] | "\(.key): \(.value)"'
+          ${{ toJSON(github.event.inputs) }}
+          EOF
+      - id: config
+        shell: bash
+        run: |
+          set -x
+          echo "Test"
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - setup
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Hello
+        run: |
+          set -x
+          python -V
+          echo "STAGE_NAME=stage" >> $GITHUB_ENV
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.STAGE_NAME }}-artifacts
+          path: |
+            ${{ env.STAGE_NAME }}/l10n-*.tgz
+          retention-days: 1
+
+  slack:
+    if: failure()
+    name: Slack
+    needs:
+      - setup
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify
+        uses: onshape/actions-slack-notify-build@v1
+        with:
+          channel: ${{ needs.setup.outputs.slack-channel }}
+          status: SUCCESS
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN_GITHUB_ACTIONS }}

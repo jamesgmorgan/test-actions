@@ -1,0 +1,24 @@
+name: List GitHub Team Members
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test-actions
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ONSHAPE_REPO_PAT }}
+      - name: Hello
+        run: |
+          set -x
+          RESULT_FILE="${{ github.workflow }} ${{ github.run_number }} developers.txt"
+          echo "RESULT_FILE=$RESULT_FILE" >> $GITHUB_ENV
+          echo "My token" > "$RESULT_FILE"
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.workflow }} ${{ github.run_number }}
+          path: ${{ env.RESULT_FILE }}
