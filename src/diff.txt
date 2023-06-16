@@ -1,0 +1,4584 @@
+diff --git a/cppServer/BTcppServer/cachingTools/cacheables-baseline.json b/cppServer/BTcppServer/cachingTools/cacheables-baseline.json
+index 331211c5031..6006d14c09a 100644
+--- a/cppServer/BTcppServer/cachingTools/cacheables-baseline.json
++++ b/cppServer/BTcppServer/cachingTools/cacheables-baseline.json
+@@ -1,2746 +1,2746 @@
+ {
+-  "BTDetIdOrderDisambiguation": {
+-    "name": "BTDetIdOrderDisambiguation",
++  "BTACHookTest": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "orderedSet_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 0
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "serializationStage",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTACHookTest",
+     "superClasses": [
+-      "BTDisambiguationData"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "BTDisambiguationData",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTFunctionValue": {
+-    "name": "BTFunctionValue",
++  "BTACSkipInContextCacheTest": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "function_",
+-        "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "BTCacheableTreeNodeConstPtr",
+-        "index": 0
+-      },
+-      {
+-        "name": "capturedVariables_",
+-        "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "std::vector< BTRValuePtr >",
+-        "index": 1
+-      },
+-      {
+-        "name": "module_",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "BTModuleDataWeakConstPtr",
+-        "index": 2
++        "fieldType": "int",
++        "index": 0,
++        "name": "integer",
++        "skipInContext": false
+       },
+       {
+-        "name": "order_",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "int",
+-        "index": 3
++        "index": 1,
++        "name": "execStateInteger",
++        "skipInContext": true
+       }
+     ],
+-    "headerFilePath": "BSLanguage/BTRValue.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTACSkipInContextCacheTest",
+     "superClasses": [
+-      "BTRValue"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "BTRValue",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBlendIntoFaceRecord": {
+-    "name": "BTBlendIntoFaceRecord",
++  "BTAutoCacheableTestClass1": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "blendedIntoFaces_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTBlendHistoryRecords.h",
+-    "superClasses": [
+-      "BTMultiDerivedRecord"
+-    ],
+-    "cacheableSuperclass": "BTMultiDerivedRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPStatementLoopForIn": {
+-    "name": "BTPStatementLoopForIn",
+-    "fields": [
++        "fieldType": "int",
++        "index": 0,
++        "name": "intField",
++        "skipInContext": false
++      },
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 0
++        "fieldType": "float",
++        "index": 1,
++        "name": "floatField",
++        "skipInContext": false
+       },
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 1
++        "fieldType": "std::vector< std::string >",
++        "index": 2,
++        "name": "stringVector",
++        "skipInContext": false
+       },
+       {
+-        "name": "keyVariable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 2
+-      }
+-    ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementLoopForIn.h",
+-    "superClasses": [
+-      "GBTPStatementLoopForIn"
+-    ],
+-    "cacheableSuperclass": "GBTPStatementLoopForIn",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPropertiesManager": {
+-    "name": "BTPropertiesManager",
+-    "fields": [
++        "fieldType": "BTAutoCacheableTestDataPtr",
++        "index": 3,
++        "name": "dataSharedPointer",
++        "skipInContext": false
++      },
+       {
+-        "name": "idToProperties_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, BTOnePartPropertiesPtr >",
+-        "index": 0
++        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
++        "index": 4,
++        "name": "dataPointerMap",
++        "skipInContext": false
+       },
+       {
+-        "name": "nodeIdToComputedData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTObjectId, BTPropertyComputedDataPtr >",
+-        "index": 1
++        "fieldType": "std::unordered_map< int, BTAutoCacheableTestData >",
++        "index": 5,
++        "name": "dataValueMap",
++        "skipInContext": false
+       },
+       {
+-        "name": "postRegenPropertySnapshot_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< BTDeterministicId, BTOnePartPropertiesPtr >",
+-        "index": 2
++        "fieldType": "float",
++        "index": 6,
++        "name": "oldFloatField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTPropertiesManager.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTAutoCacheableTestClass1",
+     "superClasses": [
+-      "BTJournal"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTCompositePart": {
+-    "name": "BTCompositePart",
++  "BTAutoCacheableTestClass2": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "detId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicId",
+-        "index": 0
++        "fieldType": "int",
++        "index": 0,
++        "name": "intField",
++        "skipInContext": false
+       },
+       {
+-        "name": "parts_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, bool >",
+-        "index": 1
++        "fieldType": "BTCacheableSkip< float >",
++        "index": 1,
++        "name": "skip_floatField",
++        "skipInContext": false
+       },
+       {
+-        "name": "isClosed_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 2
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTCompositePart.h",
+-    "superClasses": [
+-      "BTJournal"
+-    ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPTopLevelNode": {
+-    "name": "BTPTopLevelNode",
+-    "fields": [
++        "fieldType": "std::vector< std::string >",
++        "index": 2,
++        "name": "stringVector",
++        "skipInContext": false
++      },
+       {
+-        "name": "module_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModuleDataWeakConstPtr",
+-        "index": 0
++        "fieldType": "BTCacheableSkip< BTAutoCacheableTestDataPtr >",
++        "index": 3,
++        "name": "skip_dataSharedPointer",
++        "skipInContext": false
+       },
+       {
+-        "name": "isUsed_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 1
++        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
++        "index": 4,
++        "name": "dataPointerMap",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTCacheableSkip< std::unordered_map< int, BTAutoCacheableTestData > >",
++        "index": 5,
++        "name": "skip_dataValueMap",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "float",
++        "index": 6,
++        "name": "oldFloatField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "double",
++        "index": 7,
++        "name": "newDoubleField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::pair< float, std::string >",
++        "index": 8,
++        "name": "newPairField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "int",
++        "index": 9,
++        "name": "lastIntField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPTopLevelNode.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTAutoCacheableTestClass2",
+     "superClasses": [
+-      "GBTPTopLevelNode"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "GBTPTopLevelNode",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTHistoryEntry": {
+-    "name": "BTHistoryEntry",
++  "BTAutoCacheableTestClass2Post102_100_5": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "operationType_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "GBTGOperationType",
+-        "index": 0
+-      },
+-      {
+-        "name": "records_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTHistoryRecordConstPtr >",
+-        "index": 1
++        "fieldType": "int",
++        "index": 0,
++        "name": "intField",
++        "skipInContext": false
+       },
+       {
+-        "name": "deletions_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicIdSetPtr",
+-        "index": 2
++        "fieldType": "BTCacheableSkip< float >",
++        "index": 1,
++        "name": "skip_floatField",
++        "skipInContext": false
+       },
+       {
+-        "name": "operationId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTFullId",
+-        "index": 3
++        "fieldType": "std::vector< std::string >",
++        "index": 2,
++        "name": "stringVector",
++        "skipInContext": false
+       },
+       {
+-        "name": "inSketch_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 4
++        "fieldType": "BTCacheableSkip< BTAutoCacheableTestDataPtr >",
++        "index": 3,
++        "name": "skip_dataSharedPointer",
++        "skipInContext": false
+       },
+       {
+-        "name": "isModifiable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 5
++        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
++        "index": 4,
++        "name": "dataPointerMap",
++        "skipInContext": false
+       },
+       {
+-        "name": "isSheetMetalThicken_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 6
++        "fieldType": "BTCacheableSkip< std::unordered_map< int, BTAutoCacheableTestData > >",
++        "index": 5,
++        "name": "skip_dataValueMap",
++        "skipInContext": false
+       },
+       {
+-        "name": "isSheetMetalFlat_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 7
++        "fieldType": "BTCacheableSkip< float >",
++        "index": 6,
++        "name": "skip_oldFloatField",
++        "skipInContext": false
+       },
+       {
+-        "name": "contextVersion_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTContextVersion",
+-        "index": 8
++        "fieldType": "double",
++        "index": 7,
++        "name": "newDoubleField",
++        "skipInContext": false
+       },
+       {
+-        "name": "attributedChanges_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_set< BTDeterministicId >",
+-        "index": 9
++        "fieldType": "std::pair< float, std::string >",
++        "index": 8,
++        "name": "newPairField",
++        "skipInContext": false
+       },
+       {
+-        "name": "operationRegenerationHash_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "HashMap",
+-        "index": 10
++        "fieldType": "std::string",
++        "index": 9,
++        "name": "stringToReplaceLastInt",
++        "skipInContext": false
+       },
+       {
+-        "name": "propagateHoleQueriesThroughCopy_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 11
++        "fieldType": "std::vector< int >",
++        "index": 10,
++        "name": "vectorToReplaceOldFloat",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryJournal.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTAutoCacheableTestClass2Post102_100_5",
+     "superClasses": [
+       "BTCacheable"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTCompositePartManager": {
+-    "name": "BTCompositePartManager",
++  "BTAutoCacheableTestData": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "idToParts_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, BTCompositePartPtr >",
+-        "index": 0
++        "fieldType": "int",
++        "index": 0,
++        "name": "intField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "double",
++        "index": 1,
++        "name": "doubleField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::vector< std::string >",
++        "index": 2,
++        "name": "stringVector",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTCompositePartManager.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTAutoCacheableTestData",
+     "superClasses": [
+-      "BTJournal"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTMSketch": {
+-    "name": "BTMSketch",
++  "BTBitwiseBaseClass": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "plane_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "PlaneConstPtr",
+-        "index": 0
++        "fieldType": "int",
++        "index": 0,
++        "name": "intField",
++        "skipInContext": false
+       },
+       {
+-        "name": "version_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "GBTFeatureScriptVersionNumber",
+-        "index": 1
++        "fieldType": "float",
++        "index": 1,
++        "name": "floatField",
++        "skipInContext": false
+       },
+       {
+-        "name": "entitiesModifiedOnSolveCache_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::set< std::string >",
+-        "index": 2
++        "fieldType": "std::string",
++        "index": 2,
++        "name": "stringField",
++        "skipInContext": false
+       },
+       {
+-        "name": "flattenedBodyId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 3
++        "fieldType": "std::map< std::string, unsigned int >",
++        "index": 3,
++        "name": "mapField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTCacheableSkip< std::string >",
++        "index": 4,
++        "name": "skipField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "double",
++        "index": 5,
++        "name": "doubleField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeBSEdit/BTMSketch.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "inContextCache": false,
++    "name": "BTBitwiseBaseClass",
+     "superClasses": [
+-      "GBTMSketch"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "GBTMSketch",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTStringValue": {
+-    "name": "BTStringValue",
++  "BTBitwiseDerivedClass": {
++    "cacheableSuperclass": "BTBitwiseBaseClass",
+     "fields": [
+       {
+-        "name": "value_",
+         "cacheable": true,
+-        "skipInContext": false,
++        "fieldType": "BTCacheableSkip< int >",
++        "index": 0,
++        "name": "skipFieldBegin",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::shared_ptr< BTBitwiseBaseClass >",
++        "index": 1,
++        "name": "pointerField",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
+         "fieldType": "std::string",
+-        "index": 0
++        "index": 2,
++        "name": "notInContext",
++        "skipInContext": true
+       },
+       {
+-        "name": "enumIndex_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 1
+-      }
+-    ],
+-    "headerFilePath": "BSLanguage/BTRValue.h",
+-    "superClasses": [
+-      "BTRValue"
+-    ],
+-    "cacheableSuperclass": "BTRValue",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPProcedureDeclarationBase": {
+-    "name": "BTPProcedureDeclarationBase",
+-    "fields": [
++        "fieldType": "std::vector< std::pair< double, float > >",
++        "index": 3,
++        "name": "vectorField",
++        "skipInContext": false
++      },
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 0
++        "fieldType": "BTCacheableSkip< int >",
++        "index": 4,
++        "name": "skipFieldEnd",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "int",
++        "index": 5,
++        "name": "protectedField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPProcedureDeclarationBase.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "inContextCache": false,
++    "name": "BTBitwiseDerivedClass",
+     "superClasses": [
+-      "GBTPProcedureDeclarationBase"
++      "BTBitwiseBaseClass"
+     ],
+-    "cacheableSuperclass": "GBTPProcedureDeclarationBase",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTRValueWithUnits": {
+-    "name": "BTRValueWithUnits",
++  "BTBitwiseDerivedDerivedClass": {
++    "cacheableSuperclass": "BTBitwiseBaseClass",
+     "fields": [
+       {
+-        "name": "value_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 0
+-      },
+-      {
+-        "name": "unitSpec_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< GBTBaseUnit, int >",
+-        "index": 1
++        "fieldType": "std::array< BTBitwiseDerivedClass, 2 >",
++        "index": 0,
++        "name": "arrayField",
++        "skipInContext": false
+       },
+       {
+-        "name": "unitSpecTypeTag_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTagTypeConstPtr",
+-        "index": 2
++        "fieldType": "std::map< int, BTBitwiseBaseClass >",
++        "index": 1,
++        "name": "setField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSLanguage/BTRValueWithUnits.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "inContextCache": false,
++    "name": "BTBitwiseDerivedDerivedClass",
+     "superClasses": [
+-      "BTRValue"
++      "BTBitwiseBaseClass"
+     ],
+-    "cacheableSuperclass": "BTRValue",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTNamedDerivedTopologyRecord": {
+-    "name": "BTNamedDerivedTopologyRecord",
++  "BTBlendIntoFaceRecord": {
++    "cacheableSuperclass": "BTMultiDerivedRecord",
+     "fields": [
+       {
+-        "name": "name_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 0,
++        "name": "blendedIntoFaces_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTNamedDerivedRecord.h",
++    "headerFilePath": "BTModelState/BTBlendHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTBlendIntoFaceRecord",
+     "superClasses": [
+-      "BTDerivedTopologyRecord< ENTITY_TYPE >"
+-    ],
+-    "cacheableSuperclass": "BTDerivedTopologyRecord< ENTITY_TYPE >",
+-    "templateParameters": [
+-      [
+-        "BTHistoryRecord::EntityType",
+-        "ENTITY_TYPE"
+-      ]
++      "BTMultiDerivedRecord"
+     ],
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTModelState": {
+-    "name": "BTModelState",
++  "BTBuiltInContext": {
++    "cacheableSuperclass": "BTBuiltInContextBase",
+     "fields": [
+       {
+-        "name": "partition_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "PK_PARTITION_t",
+-        "index": 0
++        "fieldType": "BTModelStatePtr",
++        "index": 0,
++        "name": "modelState_",
++        "skipInContext": false
+       },
+       {
+-        "name": "pmarkJournal_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTGPmarkJournalPtr",
+-        "index": 1
++        "fieldType": "BTJournaledMap< std::string, BTBuiltInSketchWeakPtr >",
++        "index": 1,
++        "name": "sketchStates_",
++        "skipInContext": true
+       },
+       {
+-        "name": "journal_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicJournal",
+-        "index": 2
++        "fieldType": "BTJournaledMap< BTDeterministicId, BTBuiltInValuePtr >",
++        "index": 2,
++        "name": "transientIds_",
++        "skipInContext": false
+       },
+       {
+-        "name": "history_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTHistoryJournal",
+-        "index": 3
++        "fieldType": "BTJournaledMap< std::string, BTJournalPointPtr >",
++        "index": 3,
++        "name": "cleanUpPoints_",
++        "skipInContext": true
+       },
+       {
+-        "name": "ids_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, bool >",
+-        "index": 4
++        "fieldType": "BTJournaledMap< std::string, BTFeatureComputedDataPtr >",
++        "index": 4,
++        "name": "computedData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "startRollBackPoint_",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "BTJournalPointPtr",
+-        "index": 5
++        "fieldType": "BTJournaledStack< BTVariableStudioReferenceComputedDataPtr, true >",
++        "index": 5,
++        "name": "variableStudioReferenceComputedData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "fsAttributeManager_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTFSAttributes",
+-        "index": 6
++        "fieldType": "BTJournaledMap< std::string, std::string >",
++        "index": 6,
++        "name": "featureIdToName_",
++        "skipInContext": false
+       },
+       {
+-        "name": "propertiesManager_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTPropertiesManagerPtr",
+-        "index": 7
++        "fieldType": "BTJournaledItem< std::string >",
++        "index": 7,
++        "name": "currentFeatureId_",
++        "skipInContext": false
+       },
+       {
+-        "name": "configuration_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, BTRValuePtr >",
+-        "index": 8
++        "fieldType": "BTJournaledStack< FeatureStart >",
++        "index": 8,
++        "name": "featureStarts_",
++        "skipInContext": false
+       },
+       {
+-        "name": "variables_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, ValueAndDescription >",
+-        "index": 9
++        "fieldType": "BTContextVersion",
++        "index": 9,
++        "name": "defaultContextVersion_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTJournaledMap< std::string, int >",
++        "index": 10,
++        "name": "subFeatureIdToIndex_",
++        "skipInContext": false
+       },
+       {
+-        "name": "createdIdsCount_",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "BTJournaledItem< int >",
+-        "index": 10
++        "index": 11,
++        "name": "nextSubfeatureIndex_",
++        "skipInContext": false
+       },
+       {
+-        "name": "compositePartManager_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCompositePartManager",
+-        "index": 11
++        "fieldType": "BTJournaledItem< bool >",
++        "index": 12,
++        "name": "hasBeenMerged_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTModelState.h",
++    "headerFilePath": "BSGeometry/BTBuiltInContext.h",
++    "inContextCache": false,
++    "name": "BTBuiltInContext",
+     "superClasses": [
+-      "BTJournal"
++      "BTBuiltInContextBase",
++      "std::enable_shared_from_this< BTBuiltInContext >"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": true
++    "templateParameters": null
+   },
+-  "BTDeterministicIdSet": {
+-    "name": "BTDeterministicIdSet",
++  "BTBuiltInSketch": {
++    "cacheableSuperclass": "BTBuiltInObject",
+     "fields": [
+       {
+-        "name": "idSet_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_set< BTDeterministicId >",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTDeterministicIdSet.h",
+-    "superClasses": [
+-      "BTCacheable"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTSweptCapRecord": {
+-    "name": "BTSweptCapRecord",
+-    "fields": [
++        "fieldType": "BTMSketchPtr",
++        "index": 0,
++        "name": "sketchDef_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTBuiltInContextWeakPtr",
++        "index": 1,
++        "name": "context_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::unordered_map< std::string, std::vector< double > >",
++        "index": 2,
++        "name": "initialGuess_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 3,
++        "name": "faceIds_",
++        "skipInContext": false
++      },
+       {
+-        "name": "isStart_",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "bool",
+-        "index": 0
++        "index": 4,
++        "name": "solved_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTSweptHistoryRecords.h",
++    "headerFilePath": "BSGeometry/BTBuiltInSketch.h",
++    "inContextCache": false,
++    "name": "BTBuiltInSketch",
+     "superClasses": [
+-      "BTPrioritizeOriginalsRecord"
++      "BTBuiltInObject"
+     ],
+-    "cacheableSuperclass": "BTPrioritizeOriginalsRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTIdSetDisambiguation": {
+-    "name": "BTIdSetDisambiguation",
++  "BTBuiltInTransientId": {
++    "cacheableSuperclass": "BTBuiltInObject",
+     "fields": [
+       {
+-        "name": "idSets_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< BTDeterministicId, std::set< BTDeterministicId > >",
+-        "index": 0
++        "fieldType": "BTBuiltInContextWeakConstPtr",
++        "index": 0,
++        "name": "context_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTDeterministicId",
++        "index": 1,
++        "name": "id_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "headerFilePath": "BSGeometry/BTTransientQueries.h",
++    "inContextCache": false,
++    "name": "BTBuiltInTransientId",
+     "superClasses": [
+-      "BTDisambiguationData"
++      "BTBuiltInObject"
+     ],
+-    "cacheableSuperclass": "BTDisambiguationData",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTSweptMidCapRecord": {
+-    "name": "BTSweptMidCapRecord",
++  "BTCompositePart": {
++    "cacheableSuperclass": "BTJournal",
+     "fields": [
+       {
+-        "name": "pos_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTSweptHistoryRecords.h",
+-    "superClasses": [
+-      "BTPrioritizeOriginalsRecord"
+-    ],
+-    "cacheableSuperclass": "BTPrioritizeOriginalsRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
++        "fieldType": "BTDeterministicId",
++        "index": 0,
++        "name": "detId_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, bool >",
++        "index": 1,
++        "name": "parts_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "bool",
++        "index": 2,
++        "name": "isClosed_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTCompositePart.h",
++    "inContextCache": false,
++    "name": "BTCompositePart",
++    "superClasses": [
++      "BTJournal"
++    ],
++    "templateParameters": null
+   },
+-  "BTPArgumentDeclaration": {
+-    "name": "BTPArgumentDeclaration",
++  "BTCompositePartManager": {
++    "cacheableSuperclass": "BTJournal",
+     "fields": [
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 0
++        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, BTCompositePartPtr >",
++        "index": 0,
++        "name": "idToParts_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPArgumentDeclaration.h",
++    "headerFilePath": "BTModelState/BTCompositePartManager.h",
++    "inContextCache": false,
++    "name": "BTCompositePartManager",
+     "superClasses": [
+-      "GBTPArgumentDeclaration"
++      "BTJournal"
+     ],
+-    "cacheableSuperclass": "GBTPArgumentDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTDisambiguationData": {
+-    "name": "BTDisambiguationData",
++  "BTDetIdOrderDisambiguation": {
++    "cacheableSuperclass": "BTDisambiguationData",
+     "fields": [
+       {
+-        "name": "records_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTHistoryRecordWeakPtr >",
+-        "index": 0
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 0,
++        "name": "orderedSet_",
++        "skipInContext": false
+       }
+     ],
+     "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "inContextCache": false,
++    "name": "BTDetIdOrderDisambiguation",
+     "superClasses": [
+-      "BTCacheableValue"
++      "BTDisambiguationData"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTModuleData": {
+-    "name": "BTModuleData",
++  "BTDeterministicIdSet": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "symbols_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTSymbolTable",
+-        "index": 0
+-      },
+-      {
+-        "name": "moduleAndId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModuleAndIdConstPtr",
+-        "index": 1
+-      },
++        "fieldType": "std::unordered_set< BTDeterministicId >",
++        "index": 0,
++        "name": "idSet_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTDeterministicIdSet.h",
++    "inContextCache": false,
++    "name": "BTDeterministicIdSet",
++    "superClasses": [
++      "BTCacheable"
++    ],
++    "templateParameters": null
++  },
++  "BTDisambiguationData": {
++    "cacheableSuperclass": null,
++    "fields": [
+       {
+-        "name": "namespaces_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_set< std::string >",
+-        "index": 2
+-      },
++        "fieldType": "std::vector< BTHistoryRecordWeakPtr >",
++        "index": 0,
++        "name": "records_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "inContextCache": false,
++    "name": "BTDisambiguationData",
++    "superClasses": [
++      "BTCacheableValue"
++    ],
++    "templateParameters": null
++  },
++  "BTExecutionState": {
++    "cacheableSuperclass": "BTJournal",
++    "fields": [
+       {
+-        "name": "index_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 3
++        "fieldType": "BTGlobalSymbolsConstPtr",
++        "index": 0,
++        "name": "globalSymbols_",
++        "skipInContext": false
+       },
+       {
+-        "name": "precomputed_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 4
++        "fieldType": "GBTExecutionMode",
++        "index": 1,
++        "name": "executionMode_",
++        "skipInContext": false
+       },
+       {
+-        "name": "analyzed_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 5
++        "fieldType": "unsigned int",
++        "index": 2,
++        "name": "maxStepCount_",
++        "skipInContext": false
+       },
+       {
+-        "name": "globalSymbols_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTGlobalSymbolsWeakPtr",
+-        "index": 6
++        "fieldType": "BTJournaledStack< BTNoticePtr, true >",
++        "index": 3,
++        "name": "notices_",
++        "skipInContext": false
+       },
+       {
+-        "name": "importedValueWithUnitsTypeTag_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTagTypeConstPtr",
+-        "index": 7
++        "fieldType": "BTJournaledStack< BTRValuePtr >",
++        "index": 4,
++        "name": "boxValues_",
++        "skipInContext": false
+       },
+       {
+-        "name": "importedUnitSpecTypeTag_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTagTypeConstPtr",
+-        "index": 8
+-      }
+-    ],
+-    "headerFilePath": "BSLanguage/BTGlobalSymbols.h",
+-    "superClasses": [
+-      "std::enable_shared_from_this< BTModuleData >",
+-      "BTCacheable"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTJournalPoint": {
+-    "name": "BTJournalPoint",
+-    "fields": [
+-      {
+-        "name": "parent_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournalPointPtr",
+-        "index": 0
++        "fieldType": "BTJournaledStack< BTBuiltInObjectPtr, true >",
++        "index": 5,
++        "name": "builtInObjects_",
++        "skipInContext": false
+       },
+       {
+-        "name": "subJournalPoints_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTJournalPointPtr >",
+-        "index": 1
++        "fieldType": "BTJournaledStack< BTCallStackEntry >",
++        "index": 6,
++        "name": "callStack_",
++        "skipInContext": false
+       },
+       {
+-        "name": "depthFromRoot_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 2
++        "fieldType": "BTJournaledStack< BTFeatureSummaryList::Entry >",
++        "index": 7,
++        "name": "features_",
++        "skipInContext": false
+       },
+       {
+-        "name": "topLevel_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 3
++        "fieldType": "BTJournaledItem< BTRValuePtr >",
++        "index": 8,
++        "name": "finalResult_",
++        "skipInContext": false
+       },
+       {
+-        "name": "childCount_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 4
+-      }
+-    ],
+-    "headerFilePath": "BTJournaling/BTJournaling.h",
+-    "superClasses": [
+-      "BTCacheableValue"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPStatementLoopFor3": {
+-    "name": "BTPStatementLoopFor3",
+-    "fields": [
+-      {
+-        "name": "bindings_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementLoopFor3.h",
+-    "superClasses": [
+-      "GBTPStatementLoopFor3"
+-    ],
+-    "cacheableSuperclass": "GBTPStatementLoopFor3",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTBuiltInContext": {
+-    "name": "BTBuiltInContext",
+-    "fields": [
+-      {
+-        "name": "modelState_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModelStatePtr",
+-        "index": 0
++        "fieldType": "BTJournaledItem< unsigned int >",
++        "index": 9,
++        "name": "stepCount_",
++        "skipInContext": false
+       },
+       {
+-        "name": "sketchStates_",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "BTJournaledMap< std::string, BTBuiltInSketchWeakPtr >",
+-        "index": 1
++        "fieldType": "BTJournaledItem< unsigned int >",
++        "index": 10,
++        "name": "lambdaCount_",
++        "skipInContext": false
+       },
+       {
+-        "name": "transientIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTDeterministicId, BTBuiltInValuePtr >",
+-        "index": 2
++        "fieldType": "BTJournaledMap< std::string, unsigned int >",
++        "index": 11,
++        "name": "modelIdToLambda_",
++        "skipInContext": false
+       },
+       {
+-        "name": "cleanUpPoints_",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "BTJournaledMap< std::string, BTJournalPointPtr >",
+-        "index": 3
++        "fieldType": "BTJournaledItem< int >",
++        "index": 12,
++        "name": "executionFlags_",
++        "skipInContext": false
+       },
+       {
+-        "name": "computedData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, BTFeatureComputedDataPtr >",
+-        "index": 4
++        "fieldType": "BTJournaledMap< BTPTopLevelConstantDeclarationConstPtr, BTRValuePtr >",
++        "index": 13,
++        "name": "constantCache_",
++        "skipInContext": false
+       },
+       {
+-        "name": "variableStudioReferenceComputedData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTVariableStudioReferenceComputedDataPtr, true >",
+-        "index": 5
++        "fieldType": "BTJournaledItem< std::string >",
++        "index": 14,
++        "name": "console_",
++        "skipInContext": false
+       },
+       {
+-        "name": "featureIdToName_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, std::string >",
+-        "index": 6
++        "fieldType": "BTJournaledMap< std::string, double >",
++        "index": 15,
++        "name": "timers_",
++        "skipInContext": false
+       },
+       {
+-        "name": "currentFeatureId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< std::string >",
+-        "index": 7
++        "fieldType": "BTJournaledMap< std::string, BTJournalPointWeakPtr >",
++        "index": 16,
++        "name": "variableNameToFirstReference_",
++        "skipInContext": false
+       },
+       {
+-        "name": "featureStarts_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< FeatureStart >",
+-        "index": 8
+-      },
++        "fieldType": "BTJournaledItem< int >",
++        "index": 17,
++        "name": "reconfigurationDepth_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BSLanguage/BTExecutionState.h",
++    "inContextCache": false,
++    "name": "BTExecutionState",
++    "superClasses": [
++      "BTJournal",
++      "std::enable_shared_from_this< BTExecutionState >"
++    ],
++    "templateParameters": null
++  },
++  "BTFSAttributes": {
++    "cacheableSuperclass": "BTJournal",
++    "fields": [
+       {
+-        "name": "defaultContextVersion_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTContextVersion",
+-        "index": 9
++        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, std::vector< BTRValuePtr > >",
++        "index": 0,
++        "name": "entityAttributes_",
++        "skipInContext": false
+       },
+       {
+-        "name": "subFeatureIdToIndex_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, int >",
+-        "index": 10
++        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, std::map< BTRValuePtr, BTRValuePtr, BTRValueComparator > >",
++        "index": 1,
++        "name": "namedAttributes_",
++        "skipInContext": false
+       },
+       {
+-        "name": "nextSubfeatureIndex_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< int >",
+-        "index": 11
++        "fieldType": "BTJournaledMap< BTDeterministicId, std::string >",
++        "index": 2,
++        "name": "propertyIds_",
++        "skipInContext": false
+       },
+       {
+-        "name": "hasBeenMerged_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< bool >",
+-        "index": 12
++        "fieldType": "BTJournaledMap< BTDeterministicId, std::unordered_set< std::string > >",
++        "index": 3,
++        "name": "detIdToFSAssociatedFeatureIds_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSGeometry/BTBuiltInContext.h",
++    "headerFilePath": "BTModelState/BTFSAttributes.h",
++    "inContextCache": false,
++    "name": "BTFSAttributes",
+     "superClasses": [
+-      "BTBuiltInContextBase",
+-      "std::enable_shared_from_this< BTBuiltInContext >"
++      "BTJournal"
+     ],
+-    "cacheableSuperclass": "BTBuiltInContextBase",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPStatementTry": {
+-    "name": "BTPStatementTry",
++  "BTFeatureComputedData": {
++    "cacheableSuperclass": "GBTFeatureComputedData",
+     "fields": [
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 0
++        "fieldType": "BTFeatureSecondaryDataPtr",
++        "index": 0,
++        "name": "secondaryData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 1
++        "fieldType": "std::vector< int >",
++        "index": 1,
++        "name": "operationIndices_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementTry.h",
++    "headerFilePath": "BTSerialize/BTFeatureComputedData.h",
++    "inContextCache": false,
++    "name": "BTFeatureComputedData",
+     "superClasses": [
+-      "GBTPStatementTry"
++      "GBTFeatureComputedData"
+     ],
+-    "cacheableSuperclass": "GBTPStatementTry",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTSplitSurfaceIntersectionRecord": {
+-    "name": "BTSplitSurfaceIntersectionRecord",
++  "BTFunctionValue": {
++    "cacheableSuperclass": "BTRValue",
+     "fields": [
+       {
+-        "name": "isFromBackBody_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTSplitSurfaceIntersectionRecord.h",
+-    "superClasses": [
+-      "BTMultiDerivedRecordWithType< GBTQueryType::SPLIT_SURFACE_INTERSECT >"
+-    ],
+-    "cacheableSuperclass": "BTMultiDerivedRecordWithType< GBTQueryType::SPLIT_SURFACE_INTERSECT >",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTMultiDerivedRecordBase": {
+-    "name": "BTMultiDerivedRecordBase",
+-    "fields": [
++        "fieldType": "BTCacheableTreeNodeConstPtr",
++        "index": 0,
++        "name": "function_",
++        "skipInContext": true
++      },
+       {
+-        "name": "derivedFromIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTHistoryRecords.h",
+-    "superClasses": [
+-      "BTDerivedRecord"
+-    ],
+-    "cacheableSuperclass": "BTDerivedRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTImportRecord": {
+-    "name": "BTImportRecord",
+-    "fields": [
++        "fieldType": "std::vector< BTRValuePtr >",
++        "index": 1,
++        "name": "capturedVariables_",
++        "skipInContext": true
++      },
+       {
+-        "name": "importTag_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 0
++        "fieldType": "BTModuleDataWeakConstPtr",
++        "index": 2,
++        "name": "module_",
++        "skipInContext": true
++      },
++      {
++        "cacheable": true,
++        "fieldType": "int",
++        "index": 3,
++        "name": "order_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "headerFilePath": "BSLanguage/BTRValue.h",
++    "inContextCache": false,
++    "name": "BTFunctionValue",
+     "superClasses": [
+-      "BTHistoryRecord",
+-      "BTQueryTypeMixIn< GBTQueryType::IMPORT >"
++      "BTRValue"
+     ],
+-    "cacheableSuperclass": "BTHistoryRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTTopologicalDisambiguation": {
+-    "name": "BTTopologicalDisambiguation",
++  "BTHistoryEntry": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "entities_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< BTDeterministicId, std::set< IDAndSense > >",
+-        "index": 0
++        "fieldType": "GBTGOperationType",
++        "index": 0,
++        "name": "operationType_",
++        "skipInContext": false
+       },
+       {
+-        "name": "edgeConnectivityOnly_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 1
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
+-    "superClasses": [
+-      "BTDisambiguationData"
+-    ],
+-    "cacheableSuperclass": "BTDisambiguationData",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTACHookTest": {
+-    "name": "BTACHookTest",
+-    "fields": [
++        "fieldType": "std::vector< BTHistoryRecordConstPtr >",
++        "index": 1,
++        "name": "records_",
++        "skipInContext": false
++      },
+       {
+-        "name": "serializationStage",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
+-    "superClasses": [
+-      "BTCacheable"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTTessellationState": {
+-    "name": "BTTessellationState",
+-    "fields": [
++        "fieldType": "BTDeterministicIdSetPtr",
++        "index": 2,
++        "name": "deletions_",
++        "skipInContext": false
++      },
+       {
+-        "name": "deterministicIdToEntityState_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, BTTessellatedEntityState >",
+-        "index": 0
++        "fieldType": "BTFullId",
++        "index": 3,
++        "name": "operationId_",
++        "skipInContext": false
+       },
+       {
+-        "name": "deterministicIdToBodyState_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, BTTessellatedBodyState >",
+-        "index": 1
++        "fieldType": "bool",
++        "index": 4,
++        "name": "inSketch_",
++        "skipInContext": false
+       },
+       {
+-        "name": "featureToEntityCount_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, int >",
+-        "index": 2
++        "fieldType": "bool",
++        "index": 5,
++        "name": "isModifiable_",
++        "skipInContext": false
+       },
+       {
+-        "name": "entityToFeature_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, std::vector< std::string > >",
+-        "index": 3
+-      }
+-    ],
+-    "headerFilePath": "BSLanguage/BTTessellationState.h",
+-    "superClasses": [
+-      "BTCacheable"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTTreeNodeOfEntriesWrapper": {
+-    "name": "BTTreeNodeOfEntriesWrapper",
+-    "fields": [
++        "fieldType": "bool",
++        "index": 6,
++        "name": "isSheetMetalThicken_",
++        "skipInContext": false
++      },
+       {
+-        "name": "tree_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTreeNodeOfEntriesImplPtr",
+-        "index": 0
++        "fieldType": "bool",
++        "index": 7,
++        "name": "isSheetMetalFlat_",
++        "skipInContext": false
+       },
+       {
+-        "name": "maxIndex_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 1
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTTreeNodeOfEntries.cpp",
+-    "superClasses": [
+-      "BTTreeNodeOfEntries"
+-    ],
+-    "cacheableSuperclass": "BTTreeNodeOfEntries",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTStringIdentifiedHistoryRecord": {
+-    "name": "BTStringIdentifiedHistoryRecord",
+-    "fields": [
++        "fieldType": "BTContextVersion",
++        "index": 8,
++        "name": "contextVersion_",
++        "skipInContext": false
++      },
+       {
+-        "name": "stringIdentifier_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTModelState/BTStringIdentifiedHistoryRecords.h",
+-    "superClasses": [
+-      "BTHistoryRecord",
+-      "BTQueryTypeMixIn< QUERY_TYPE >"
+-    ],
+-    "cacheableSuperclass": "BTHistoryRecord",
+-    "templateParameters": [
+-      [
+-        "GBTQueryType",
+-        "QUERY_TYPE"
+-      ]
+-    ],
+-    "inContextCache": false
+-  },
+-  "BTPTopLevelEnumDeclaration": {
+-    "name": "BTPTopLevelEnumDeclaration",
+-    "fields": [
++        "fieldType": "std::unordered_set< BTDeterministicId >",
++        "index": 9,
++        "name": "attributedChanges_",
++        "skipInContext": false
++      },
+       {
+-        "name": "enumerations_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "IndexMap",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTSerializeParse/BTPTopLevelEnumDeclaration.h",
+-    "superClasses": [
+-      "GBTPTopLevelEnumDeclaration"
+-    ],
+-    "cacheableSuperclass": "GBTPTopLevelEnumDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTQueryEvaluationDetails": {
+-    "name": "BTQueryEvaluationDetails",
+-    "fields": [
++        "fieldType": "HashMap",
++        "index": 10,
++        "name": "operationRegenerationHash_",
++        "skipInContext": false
++      },
+       {
+-        "name": "queryType_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "bool",
++        "index": 11,
++        "name": "propagateHoleQueriesThroughCopy_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeUtils/BTQueryEvaluationDetails.h",
++    "headerFilePath": "BTModelState/BTHistoryJournal.h",
++    "inContextCache": false,
++    "name": "BTHistoryEntry",
+     "superClasses": [
+-      "GBTQueryEvaluationDetails"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "GBTQueryEvaluationDetails",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTFeatureComputedData": {
+-    "name": "BTFeatureComputedData",
++  "BTHistoryJournal": {
++    "cacheableSuperclass": "BTJournal",
+     "fields": [
+       {
+-        "name": "secondaryData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTFeatureSecondaryDataPtr",
+-        "index": 0
++        "fieldType": "EntryStack",
++        "index": 0,
++        "name": "entries_",
++        "skipInContext": false
+       },
+       {
+-        "name": "operationIndices_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< int >",
+-        "index": 1
+-      }
+-    ],
+-    "headerFilePath": "BTSerialize/BTFeatureComputedData.h",
+-    "superClasses": [
+-      "GBTFeatureComputedData"
+-    ],
+-    "cacheableSuperclass": "GBTFeatureComputedData",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTSketchComputedData": {
+-    "name": "BTSketchComputedData",
+-    "fields": [
++        "fieldType": "TopLevelStack",
++        "index": 1,
++        "name": "topLevelNodes_",
++        "skipInContext": false
++      },
+       {
+-        "name": "dimensionData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDimensionDisplayDataPtr >",
+-        "index": 0
++        "fieldType": "BTJournaledMap< std::string, int >",
++        "index": 2,
++        "name": "idComponentToTopLevel_",
++        "skipInContext": false
+       },
+       {
+-        "name": "imageData_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, BTSketchImageDisplayDataPtr >",
+-        "index": 1
++        "fieldType": "BTJournaledItem< BTTreeNodeOfEntriesConstPtr >",
++        "index": 3,
++        "name": "pendingNode_",
++        "skipInContext": false
+       },
+       {
+-        "name": "transformMatrix_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBSMatrixPtr",
+-        "index": 2
+-      }
+-    ],
+-    "headerFilePath": "BTSerialize/BTSketchComputedData.h",
+-    "superClasses": [
+-      "GBTSketchComputedData"
+-    ],
+-    "cacheableSuperclass": "GBTSketchComputedData",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPStatementBlock": {
+-    "name": "BTPStatementBlock",
+-    "fields": [
++        "fieldType": "BTJournaledMap< BTDeterministicId, RecordIndices >",
++        "index": 4,
++        "name": "references_",
++        "skipInContext": false
++      },
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 0
++        "fieldType": "BTJournaledMap< std::string, std::vector< BTDeterministicId > >",
++        "index": 5,
++        "name": "namedIds_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementBlock.h",
++    "headerFilePath": "BTModelState/BTHistoryJournal.h",
++    "inContextCache": false,
++    "name": "BTHistoryJournal",
+     "superClasses": [
+-      "GBTPStatementBlock"
++      "BTJournal"
+     ],
+-    "cacheableSuperclass": "GBTPStatementBlock",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTRValue": {
+-    "name": "BTRValue",
++  "BTHistoryRecord": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "typeTag_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTagTypeConstPtr",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BSLanguage/BTRValue.h",
+-    "superClasses": [
+-      "BTValue"
+-    ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTPLValueVarReference": {
+-    "name": "BTPLValueVarReference",
+-    "fields": [
++        "fieldType": "BTDeterministicId",
++        "index": 0,
++        "name": "detId_",
++        "skipInContext": false
++      },
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 0
+-      }
+-    ],
+-    "headerFilePath": "BTSerializeParse/BTPLValueVarReference.h",
+-    "superClasses": [
+-      "GBTPLValueVarReference"
+-    ],
+-    "cacheableSuperclass": "GBTPLValueVarReference",
+-    "templateParameters": null,
+-    "inContextCache": false
+-  },
+-  "BTOnePartProperties": {
+-    "name": "BTOnePartProperties",
+-    "fields": [
++        "fieldType": "std::vector< BTDisambiguationDataConstPtr >",
++        "index": 1,
++        "name": "disambiguation_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "EntityType",
++        "index": 2,
++        "name": "entType_",
++        "skipInContext": false
++      },
+       {
+-        "name": "defaultColorHash_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "double",
++        "index": 3,
++        "name": "evaluationComplexity_",
++        "skipInContext": false
+       },
+       {
+-        "name": "propertyIdToSource_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, BTPartMetadataSourcePtr >",
+-        "index": 1
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 4,
++        "name": "matchedEntityIds_",
++        "skipInContext": false
+       },
+       {
+-        "name": "referencingConfiguredPartNodeIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTObjectId >",
+-        "index": 2
++        "fieldType": "BTDeterministicIdSetConstPtr",
++        "index": 5,
++        "name": "creationIdSet_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeBSEdit/BTOnePartProperties.h",
++    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTHistoryRecord",
+     "superClasses": [
+-      "GBTOnePartProperties"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "GBTOnePartProperties",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTQueryData": {
+-    "name": "BTQueryData",
++  "BTIdSetDisambiguation": {
++    "cacheableSuperclass": "BTDisambiguationData",
+     "fields": [
+       {
+-        "name": "deterministicIdsWithDerived_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::string >",
+-        "index": 0
++        "fieldType": "std::unordered_map< BTDeterministicId, std::set< BTDeterministicId > >",
++        "index": 0,
++        "name": "idSets_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeUtils/BTQueryData.h",
++    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "inContextCache": false,
++    "name": "BTIdSetDisambiguation",
+     "superClasses": [
+-      "GBTQueryData"
++      "BTDisambiguationData"
+     ],
+-    "cacheableSuperclass": "GBTQueryData",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPatternRecord": {
+-    "name": "BTPatternRecord",
++  "BTImportRecord": {
++    "cacheableSuperclass": "BTHistoryRecord",
+     "fields": [
+       {
+-        "name": "instanceName_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "double",
++        "index": 0,
++        "name": "importTag_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTPatternRecord.h",
++    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTImportRecord",
+     "superClasses": [
+-      "BTCopyRecord< ENTITY_TYPE >",
+-      "BTPatternRecordBase"
+-    ],
+-    "cacheableSuperclass": "BTCopyRecord< ENTITY_TYPE >",
+-    "templateParameters": [
+-      [
+-        "BTHistoryRecord::EntityType",
+-        "ENTITY_TYPE"
+-      ]
++      "BTHistoryRecord",
++      "BTQueryTypeMixIn< GBTQueryType::IMPORT >"
+     ],
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTHistoryRecord": {
+-    "name": "BTHistoryRecord",
++  "BTJournalPoint": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "detId_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicId",
+-        "index": 0
+-      },
+-      {
+-        "name": "disambiguation_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDisambiguationDataConstPtr >",
+-        "index": 1
++        "fieldType": "BTJournalPointPtr",
++        "index": 0,
++        "name": "parent_",
++        "skipInContext": false
+       },
+       {
+-        "name": "entType_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "EntityType",
+-        "index": 2
++        "fieldType": "std::vector< BTJournalPointPtr >",
++        "index": 1,
++        "name": "subJournalPoints_",
++        "skipInContext": false
+       },
+       {
+-        "name": "evaluationComplexity_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 3
++        "fieldType": "int",
++        "index": 2,
++        "name": "depthFromRoot_",
++        "skipInContext": false
+       },
+       {
+-        "name": "matchedEntityIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 4
++        "fieldType": "bool",
++        "index": 3,
++        "name": "topLevel_",
++        "skipInContext": false
+       },
+       {
+-        "name": "creationIdSet_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicIdSetConstPtr",
+-        "index": 5
++        "fieldType": "int",
++        "index": 4,
++        "name": "childCount_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "headerFilePath": "BTJournaling/BTJournaling.h",
++    "inContextCache": false,
++    "name": "BTJournalPoint",
+     "superClasses": [
+-      "BTCacheable"
++      "BTCacheableValue"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPTopLevelTypeDeclaration": {
+-    "name": "BTPTopLevelTypeDeclaration",
++  "BTMFeature": {
++    "cacheableSuperclass": "GBTMFeature",
+     "fields": [
+       {
+-        "name": "element_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "BTModuleDataWeakConstPtr",
++        "index": 0,
++        "name": "module_",
++        "skipInContext": false
+       },
+       {
+-        "name": "tagType_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTagTypeConstPtr",
+-        "index": 1
++        "fieldType": "BTBindings",
++        "index": 1,
++        "name": "bindings_",
++        "skipInContext": false
+       },
+       {
+-        "name": "associatedProcedures_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "Procedures",
+-        "index": 2
++        "fieldType": "BTCaptures",
++        "index": 2,
++        "name": "captures_",
++        "skipInContext": false
+       },
+       {
+-        "name": "convertFrom_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "Converters",
+-        "index": 3
++        "fieldType": "BTVarId",
++        "index": 3,
++        "name": "self_",
++        "skipInContext": false
+       },
+       {
+-        "name": "convertTo_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "Converters",
+-        "index": 4
++        "fieldType": "unsigned int",
++        "index": 4,
++        "name": "unique_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPTopLevelTypeDeclaration.h",
++    "headerFilePath": "BTSerializeBSEdit/BTMFeature.h",
++    "inContextCache": false,
++    "name": "BTMFeature",
+     "superClasses": [
+-      "GBTPTopLevelTypeDeclaration"
++      "GBTMFeature"
+     ],
+-    "cacheableSuperclass": "GBTPTopLevelTypeDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTTreeNodeOfEntriesImpl": {
+-    "name": "BTTreeNodeOfEntriesImpl",
++  "BTMModel": {
++    "cacheableSuperclass": "GBTMModel",
+     "fields": [
+       {
+-        "name": "indexRange_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::pair< int, int >",
+-        "index": 0
+-      },
+-      {
+-        "name": "idComponent_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 1
++        "fieldType": "BTModuleDataWeakConstPtr",
++        "index": 0,
++        "name": "module_",
++        "skipInContext": false
+       },
+       {
+-        "name": "depthInTree_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 2
+-      },
++        "fieldType": "BTBindings",
++        "index": 1,
++        "name": "bindings_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTSerializeBSEdit/BTMModel.h",
++    "inContextCache": false,
++    "name": "BTMModel",
++    "superClasses": [
++      "GBTMModel"
++    ],
++    "templateParameters": null
++  },
++  "BTMSketch": {
++    "cacheableSuperclass": "GBTMSketch",
++    "fields": [
+       {
+-        "name": "idComponentToChildIdx_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, int >",
+-        "index": 3
++        "fieldType": "PlaneConstPtr",
++        "index": 0,
++        "name": "plane_",
++        "skipInContext": false
+       },
+       {
+-        "name": "idComponentToEntryIdx_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, int >",
+-        "index": 4
++        "fieldType": "GBTFeatureScriptVersionNumber",
++        "index": 1,
++        "name": "version_",
++        "skipInContext": false
+       },
+       {
+-        "name": "children_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTTreeNodeOfEntriesImplPtr >",
+-        "index": 5
++        "fieldType": "std::set< std::string >",
++        "index": 2,
++        "name": "entitiesModifiedOnSolveCache_",
++        "skipInContext": false
+       },
+       {
+-        "name": "skipOrderDisambiguation_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 6
++        "fieldType": "std::string",
++        "index": 3,
++        "name": "flattenedBodyId_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTTreeNodeOfEntries.cpp",
++    "headerFilePath": "BTSerializeBSEdit/BTMSketch.h",
++    "inContextCache": false,
++    "name": "BTMSketch",
+     "superClasses": [
+-      "BTCacheable"
++      "GBTMSketch"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTValueInExecutionState": {
+-    "name": "BTValueInExecutionState",
++  "BTMergeRecord": {
++    "cacheableSuperclass": "BTMultiDerivedRecordBase",
+     "fields": [
+       {
+-        "name": "id_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 0,
++        "name": "idsFromTools_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSLanguage/BTRValue.h",
++    "headerFilePath": "BTModelState/BTModifyRecord.h",
++    "inContextCache": false,
++    "name": "BTMergeRecord",
+     "superClasses": [
+-      "BTRValue",
+-      "BTCacheableExec"
++      "BTMultiDerivedRecordBase",
++      "BTQueryTypeMixIn< GBTQueryType::MERGE >"
+     ],
+-    "cacheableSuperclass": "BTRValue",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPTopLevelConstantDeclaration": {
+-    "name": "BTPTopLevelConstantDeclaration",
++  "BTMicroBenchmarkGen": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "dependentExpressions_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTPExpressionVarReferenceWeakPtr >",
+-        "index": 0
++        "fieldType": "int",
++        "index": 0,
++        "name": "integer",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "float",
++        "index": 1,
++        "name": "floating",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "double",
++        "index": 2,
++        "name": "doublePrecision",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "bool",
++        "index": 3,
++        "name": "boolean",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "std::string",
++        "index": 4,
++        "name": "stringField",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPTopLevelConstantDeclaration.h",
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTMicroBenchmarkGen",
+     "superClasses": [
+-      "GBTPTopLevelConstantDeclaration"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "GBTPTopLevelConstantDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTTagType": {
+-    "name": "BTTagType",
++  "BTModelState": {
++    "cacheableSuperclass": "BTJournal",
+     "fields": [
+       {
+-        "name": "typeName_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "PK_PARTITION_t",
++        "index": 0,
++        "name": "partition_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTGPmarkJournalPtr",
++        "index": 1,
++        "name": "pmarkJournal_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTDeterministicJournal",
++        "index": 2,
++        "name": "journal_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTHistoryJournal",
++        "index": 3,
++        "name": "history_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTJournaledMap< std::string, bool >",
++        "index": 4,
++        "name": "ids_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTJournalPointPtr",
++        "index": 5,
++        "name": "startRollBackPoint_",
++        "skipInContext": true
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTFSAttributes",
++        "index": 6,
++        "name": "fsAttributeManager_",
++        "skipInContext": false
+       },
+       {
+-        "name": "forExport_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 1
++        "fieldType": "BTPropertiesManagerPtr",
++        "index": 7,
++        "name": "propertiesManager_",
++        "skipInContext": false
+       },
+       {
+-        "name": "isEnum_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 2
++        "fieldType": "std::unordered_map< std::string, BTRValuePtr >",
++        "index": 8,
++        "name": "configuration_",
++        "skipInContext": false
+       },
+       {
+-        "name": "version_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 3
++        "fieldType": "BTJournaledMap< std::string, ValueAndDescription >",
++        "index": 9,
++        "name": "variables_",
++        "skipInContext": false
+       },
+       {
+-        "name": "elementId_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 4
++        "fieldType": "BTJournaledItem< int >",
++        "index": 10,
++        "name": "createdIdsCount_",
++        "skipInContext": false
+       },
+       {
+-        "name": "moduleMicroversion_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 5
++        "fieldType": "BTCompositePartManager",
++        "index": 11,
++        "name": "compositePartManager_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTTagType.h",
++    "headerFilePath": "BTModelState/BTModelState.h",
++    "inContextCache": true,
++    "name": "BTModelState",
+     "superClasses": [
+-      "BTCacheableValue"
++      "BTJournal"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTExecutionState": {
+-    "name": "BTExecutionState",
++  "BTModuleData": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "globalSymbols_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTGlobalSymbolsConstPtr",
+-        "index": 0
++        "fieldType": "BTSymbolTable",
++        "index": 0,
++        "name": "symbols_",
++        "skipInContext": false
+       },
+       {
+-        "name": "executionMode_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "GBTExecutionMode",
+-        "index": 1
++        "fieldType": "BTModuleAndIdConstPtr",
++        "index": 1,
++        "name": "moduleAndId_",
++        "skipInContext": false
+       },
+       {
+-        "name": "maxStepCount_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "unsigned int",
+-        "index": 2
++        "fieldType": "std::unordered_set< std::string >",
++        "index": 2,
++        "name": "namespaces_",
++        "skipInContext": false
+       },
+       {
+-        "name": "notices_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTNoticePtr, true >",
+-        "index": 3
++        "fieldType": "int",
++        "index": 3,
++        "name": "index_",
++        "skipInContext": false
+       },
+       {
+-        "name": "boxValues_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTRValuePtr >",
+-        "index": 4
++        "fieldType": "bool",
++        "index": 4,
++        "name": "precomputed_",
++        "skipInContext": false
+       },
+       {
+-        "name": "builtInObjects_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTBuiltInObjectPtr, true >",
+-        "index": 5
++        "fieldType": "bool",
++        "index": 5,
++        "name": "analyzed_",
++        "skipInContext": false
+       },
+       {
+-        "name": "callStack_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTCallStackEntry >",
+-        "index": 6
++        "fieldType": "BTGlobalSymbolsWeakPtr",
++        "index": 6,
++        "name": "globalSymbols_",
++        "skipInContext": false
+       },
+       {
+-        "name": "features_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledStack< BTFeatureSummaryList::Entry >",
+-        "index": 7
++        "fieldType": "BTTagTypeConstPtr",
++        "index": 7,
++        "name": "importedValueWithUnitsTypeTag_",
++        "skipInContext": false
+       },
+       {
+-        "name": "finalResult_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< BTRValuePtr >",
+-        "index": 8
+-      },
++        "fieldType": "BTTagTypeConstPtr",
++        "index": 8,
++        "name": "importedUnitSpecTypeTag_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BSLanguage/BTGlobalSymbols.h",
++    "inContextCache": false,
++    "name": "BTModuleData",
++    "superClasses": [
++      "std::enable_shared_from_this< BTModuleData >",
++      "BTCacheable"
++    ],
++    "templateParameters": null
++  },
++  "BTMultiDerivedRecordBase": {
++    "cacheableSuperclass": "BTDerivedRecord",
++    "fields": [
+       {
+-        "name": "stepCount_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< unsigned int >",
+-        "index": 9
+-      },
++        "fieldType": "std::vector< BTDeterministicId >",
++        "index": 0,
++        "name": "derivedFromIds_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTMultiDerivedRecordBase",
++    "superClasses": [
++      "BTDerivedRecord"
++    ],
++    "templateParameters": null
++  },
++  "BTNamedDerivedTopologyRecord": {
++    "cacheableSuperclass": "BTDerivedTopologyRecord< ENTITY_TYPE >",
++    "fields": [
+       {
+-        "name": "lambdaCount_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< unsigned int >",
+-        "index": 10
+-      },
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "name_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTNamedDerivedRecord.h",
++    "inContextCache": false,
++    "name": "BTNamedDerivedTopologyRecord",
++    "superClasses": [
++      "BTDerivedTopologyRecord< ENTITY_TYPE >"
++    ],
++    "templateParameters": [
++      [
++        "BTHistoryRecord::EntityType",
++        "ENTITY_TYPE"
++      ]
++    ]
++  },
++  "BTNamingRecord": {
++    "cacheableSuperclass": "BTSingleDerivedRecordWithType< GBTQueryType::NAMED >",
++    "fields": [
+       {
+-        "name": "modelIdToLambda_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, unsigned int >",
+-        "index": 11
+-      },
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "name_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTNamingRecord.h",
++    "inContextCache": false,
++    "name": "BTNamingRecord",
++    "superClasses": [
++      "BTSingleDerivedRecordWithType< GBTQueryType::NAMED >"
++    ],
++    "templateParameters": null
++  },
++  "BTNanoBenchmarkGen": {
++    "cacheableSuperclass": null,
++    "fields": [
+       {
+-        "name": "executionFlags_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< int >",
+-        "index": 12
+-      },
++        "fieldType": "int",
++        "index": 0,
++        "name": "onlyField",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "inContextCache": false,
++    "name": "BTNanoBenchmarkGen",
++    "superClasses": [
++      "BTCacheable"
++    ],
++    "templateParameters": null
++  },
++  "BTOnePartProperties": {
++    "cacheableSuperclass": "GBTOnePartProperties",
++    "fields": [
+       {
+-        "name": "constantCache_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTPTopLevelConstantDeclarationConstPtr, BTRValuePtr >",
+-        "index": 13
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "defaultColorHash_",
++        "skipInContext": false
+       },
+       {
+-        "name": "console_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< std::string >",
+-        "index": 14
++        "fieldType": "std::unordered_map< std::string, BTPartMetadataSourcePtr >",
++        "index": 1,
++        "name": "propertyIdToSource_",
++        "skipInContext": false
+       },
+       {
+-        "name": "timers_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, double >",
+-        "index": 15
+-      },
++        "fieldType": "std::vector< BTObjectId >",
++        "index": 2,
++        "name": "referencingConfiguredPartNodeIds_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTSerializeBSEdit/BTOnePartProperties.h",
++    "inContextCache": false,
++    "name": "BTOnePartProperties",
++    "superClasses": [
++      "GBTOnePartProperties"
++    ],
++    "templateParameters": null
++  },
++  "BTOwnerDisambiguation": {
++    "cacheableSuperclass": "BTDisambiguationData",
++    "fields": [
+       {
+-        "name": "variableNameToFirstReference_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, BTJournalPointWeakPtr >",
+-        "index": 16
+-      },
++        "fieldType": "std::unordered_map< BTDeterministicId, BTDeterministicId >",
++        "index": 0,
++        "name": "id2IdMap_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "inContextCache": false,
++    "name": "BTOwnerDisambiguation",
++    "superClasses": [
++      "BTDisambiguationData"
++    ],
++    "templateParameters": null
++  },
++  "BTPArgumentDeclaration": {
++    "cacheableSuperclass": "GBTPArgumentDeclaration",
++    "fields": [
+       {
+-        "name": "reconfigurationDepth_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< int >",
+-        "index": 17
++        "fieldType": "BTVarId",
++        "index": 0,
++        "name": "variable_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSLanguage/BTExecutionState.h",
++    "headerFilePath": "BTSerializeParse/BTPArgumentDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPArgumentDeclaration",
+     "superClasses": [
+-      "BTJournal",
+-      "std::enable_shared_from_this< BTExecutionState >"
++      "GBTPArgumentDeclaration"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPTypeNameUser": {
+-    "name": "BTPTypeNameUser",
++  "BTPExpressionFunction": {
++    "cacheableSuperclass": "GBTPExpressionFunction",
+     "fields": [
+       {
+-        "name": "typeClass_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTTypeClass",
+-        "index": 0
++        "fieldType": "BTModuleDataWeakConstPtr",
++        "index": 0,
++        "name": "module_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTBindings",
++        "index": 1,
++        "name": "bindings_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "BTCaptures",
++        "index": 2,
++        "name": "captures_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPTypeNameUser.h",
++    "headerFilePath": "BTSerializeParse/BTPExpressionFunction.h",
++    "inContextCache": false,
++    "name": "BTPExpressionFunction",
+     "superClasses": [
+-      "GBTPTypeNameUser"
++      "GBTPExpressionFunction"
+     ],
+-    "cacheableSuperclass": "GBTPTypeNameUser",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+   "BTPExpressionVarReference": {
+-    "name": "BTPExpressionVarReference",
++    "cacheableSuperclass": "GBTPExpressionVarReference",
+     "fields": [
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "BTVarId",
+-        "index": 0
++        "index": 0,
++        "name": "variable_",
++        "skipInContext": false
+       },
+       {
+-        "name": "binding_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableTreeNodeWeakConstPtr",
+-        "index": 1
++        "fieldType": "BTCacheableTreeNodeWeakConstPtr",
++        "index": 1,
++        "name": "binding_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTSerializeParse/BTPExpressionVarReference.h",
++    "inContextCache": false,
++    "name": "BTPExpressionVarReference",
++    "superClasses": [
++      "GBTPExpressionVarReference"
++    ],
++    "templateParameters": null
++  },
++  "BTPLValueVarReference": {
++    "cacheableSuperclass": "GBTPLValueVarReference",
++    "fields": [
++      {
++        "cacheable": true,
++        "fieldType": "BTVarId",
++        "index": 0,
++        "name": "variable_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTSerializeParse/BTPLValueVarReference.h",
++    "inContextCache": false,
++    "name": "BTPLValueVarReference",
++    "superClasses": [
++      "GBTPLValueVarReference"
++    ],
++    "templateParameters": null
++  },
++  "BTPProcedureDeclarationBase": {
++    "cacheableSuperclass": "GBTPProcedureDeclarationBase",
++    "fields": [
++      {
++        "cacheable": true,
++        "fieldType": "BTBindings",
++        "index": 0,
++        "name": "bindings_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPExpressionVarReference.h",
++    "headerFilePath": "BTSerializeParse/BTPProcedureDeclarationBase.h",
++    "inContextCache": false,
++    "name": "BTPProcedureDeclarationBase",
+     "superClasses": [
+-      "GBTPExpressionVarReference"
++      "GBTPProcedureDeclarationBase"
+     ],
+-    "cacheableSuperclass": "GBTPExpressionVarReference",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTMergeRecord": {
+-    "name": "BTMergeRecord",
++  "BTPStatementBlock": {
++    "cacheableSuperclass": "GBTPStatementBlock",
+     "fields": [
+       {
+-        "name": "idsFromTools_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 0
++        "fieldType": "BTBindings",
++        "index": 0,
++        "name": "bindings_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTModifyRecord.h",
++    "headerFilePath": "BTSerializeParse/BTPStatementBlock.h",
++    "inContextCache": false,
++    "name": "BTPStatementBlock",
+     "superClasses": [
+-      "BTMultiDerivedRecordBase",
+-      "BTQueryTypeMixIn< GBTQueryType::MERGE >"
++      "GBTPStatementBlock"
+     ],
+-    "cacheableSuperclass": "BTMultiDerivedRecordBase",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTSplitRecord": {
+-    "name": "BTSplitRecord",
++  "BTPStatementConstantDeclaration": {
++    "cacheableSuperclass": "GBTPStatementConstantDeclaration",
+     "fields": [
+       {
+-        "name": "isFromBackBody_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 0
++        "fieldType": "BTVarId",
++        "index": 0,
++        "name": "variable_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTModifyRecord.h",
++    "headerFilePath": "BTSerializeParse/BTPStatementConstantDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPStatementConstantDeclaration",
+     "superClasses": [
+-      "BTSingleDerivedRecordWithType< GBTQueryType::SPLIT >"
++      "GBTPStatementConstantDeclaration"
+     ],
+-    "cacheableSuperclass": "BTSingleDerivedRecordWithType< GBTQueryType::SPLIT >",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBuiltInTransientId": {
+-    "name": "BTBuiltInTransientId",
++  "BTPStatementLoopFor3": {
++    "cacheableSuperclass": "GBTPStatementLoopFor3",
+     "fields": [
+       {
+-        "name": "context_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBuiltInContextWeakConstPtr",
+-        "index": 0
+-      },
+-      {
+-        "name": "id_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicId",
+-        "index": 1
++        "fieldType": "BTBindings",
++        "index": 0,
++        "name": "bindings_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSGeometry/BTTransientQueries.h",
++    "headerFilePath": "BTSerializeParse/BTPStatementLoopFor3.h",
++    "inContextCache": false,
++    "name": "BTPStatementLoopFor3",
+     "superClasses": [
+-      "BTBuiltInObject"
++      "GBTPStatementLoopFor3"
+     ],
+-    "cacheableSuperclass": "BTBuiltInObject",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTHistoryJournal": {
+-    "name": "BTHistoryJournal",
++  "BTPStatementLoopForIn": {
++    "cacheableSuperclass": "GBTPStatementLoopForIn",
+     "fields": [
+       {
+-        "name": "entries_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "EntryStack",
+-        "index": 0
+-      },
+-      {
+-        "name": "topLevelNodes_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "TopLevelStack",
+-        "index": 1
++        "fieldType": "BTBindings",
++        "index": 0,
++        "name": "bindings_",
++        "skipInContext": false
+       },
+       {
+-        "name": "idComponentToTopLevel_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, int >",
+-        "index": 2
++        "fieldType": "BTVarId",
++        "index": 1,
++        "name": "variable_",
++        "skipInContext": false
+       },
+       {
+-        "name": "pendingNode_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledItem< BTTreeNodeOfEntriesConstPtr >",
+-        "index": 3
+-      },
++        "fieldType": "BTVarId",
++        "index": 2,
++        "name": "keyVariable_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTSerializeParse/BTPStatementLoopForIn.h",
++    "inContextCache": false,
++    "name": "BTPStatementLoopForIn",
++    "superClasses": [
++      "GBTPStatementLoopForIn"
++    ],
++    "templateParameters": null
++  },
++  "BTPStatementTry": {
++    "cacheableSuperclass": "GBTPStatementTry",
++    "fields": [
+       {
+-        "name": "references_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTDeterministicId, RecordIndices >",
+-        "index": 4
++        "fieldType": "BTBindings",
++        "index": 0,
++        "name": "bindings_",
++        "skipInContext": false
+       },
+       {
+-        "name": "namedIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< std::string, std::vector< BTDeterministicId > >",
+-        "index": 5
++        "fieldType": "BTVarId",
++        "index": 1,
++        "name": "variable_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryJournal.h",
++    "headerFilePath": "BTSerializeParse/BTPStatementTry.h",
++    "inContextCache": false,
++    "name": "BTPStatementTry",
+     "superClasses": [
+-      "BTJournal"
++      "GBTPStatementTry"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTTransformComputedData": {
+-    "name": "BTTransformComputedData",
++  "BTPStatementVarDeclaration": {
++    "cacheableSuperclass": "GBTPStatementVarDeclaration",
+     "fields": [
+       {
+-        "name": "transform_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "Eigen::Matrix4d",
+-        "index": 0
++        "fieldType": "BTVarId",
++        "index": 0,
++        "name": "variable_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSGeometry/BTTransformComputedData.h",
++    "headerFilePath": "BTSerializeParse/BTPStatementVarDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPStatementVarDeclaration",
+     "superClasses": [
+-      "BTFeatureSecondaryData",
+-      "BTCacheable"
++      "GBTPStatementVarDeclaration"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTFSAttributes": {
+-    "name": "BTFSAttributes",
++  "BTPTopLevelConstantDeclaration": {
++    "cacheableSuperclass": "GBTPTopLevelConstantDeclaration",
+     "fields": [
+       {
+-        "name": "entityAttributes_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, std::vector< BTRValuePtr > >",
+-        "index": 0
+-      },
+-      {
+-        "name": "namedAttributes_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledOrderedMap< BTDeterministicId, std::map< BTRValuePtr, BTRValuePtr, BTRValueComparator > >",
+-        "index": 1
+-      },
+-      {
+-        "name": "propertyIds_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTDeterministicId, std::string >",
+-        "index": 2
+-      },
+-      {
+-        "name": "detIdToFSAssociatedFeatureIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTJournaledMap< BTDeterministicId, std::unordered_set< std::string > >",
+-        "index": 3
++        "fieldType": "std::vector< BTPExpressionVarReferenceWeakPtr >",
++        "index": 0,
++        "name": "dependentExpressions_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTFSAttributes.h",
++    "headerFilePath": "BTSerializeParse/BTPTopLevelConstantDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPTopLevelConstantDeclaration",
+     "superClasses": [
+-      "BTJournal"
++      "GBTPTopLevelConstantDeclaration"
+     ],
+-    "cacheableSuperclass": "BTJournal",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTMFeature": {
+-    "name": "BTMFeature",
++  "BTPTopLevelEnumDeclaration": {
++    "cacheableSuperclass": "GBTPTopLevelEnumDeclaration",
+     "fields": [
+       {
+-        "name": "module_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModuleDataWeakConstPtr",
+-        "index": 0
+-      },
+-      {
+-        "name": "bindings_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 1
+-      },
+-      {
+-        "name": "captures_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCaptures",
+-        "index": 2
+-      },
+-      {
+-        "name": "self_",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 3
+-      },
+-      {
+-        "name": "unique_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "unsigned int",
+-        "index": 4
++        "fieldType": "IndexMap",
++        "index": 0,
++        "name": "enumerations_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeBSEdit/BTMFeature.h",
++    "headerFilePath": "BTSerializeParse/BTPTopLevelEnumDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPTopLevelEnumDeclaration",
+     "superClasses": [
+-      "GBTMFeature"
++      "GBTPTopLevelEnumDeclaration"
+     ],
+-    "cacheableSuperclass": "GBTMFeature",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPStatementConstantDeclaration": {
+-    "name": "BTPStatementConstantDeclaration",
++  "BTPTopLevelNode": {
++    "cacheableSuperclass": "GBTPTopLevelNode",
+     "fields": [
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 0
++        "fieldType": "BTModuleDataWeakConstPtr",
++        "index": 0,
++        "name": "module_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "bool",
++        "index": 1,
++        "name": "isUsed_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementConstantDeclaration.h",
++    "headerFilePath": "BTSerializeParse/BTPTopLevelNode.h",
++    "inContextCache": false,
++    "name": "BTPTopLevelNode",
+     "superClasses": [
+-      "GBTPStatementConstantDeclaration"
++      "GBTPTopLevelNode"
+     ],
+-    "cacheableSuperclass": "GBTPStatementConstantDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTMModel": {
+-    "name": "BTMModel",
++  "BTPTopLevelTypeDeclaration": {
++    "cacheableSuperclass": "GBTPTopLevelTypeDeclaration",
+     "fields": [
+       {
+-        "name": "module_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModuleDataWeakConstPtr",
+-        "index": 0
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "element_",
++        "skipInContext": false
+       },
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 1
++        "fieldType": "BTTagTypeConstPtr",
++        "index": 1,
++        "name": "tagType_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "Procedures",
++        "index": 2,
++        "name": "associatedProcedures_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "Converters",
++        "index": 3,
++        "name": "convertFrom_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "Converters",
++        "index": 4,
++        "name": "convertTo_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeBSEdit/BTMModel.h",
++    "headerFilePath": "BTSerializeParse/BTPTopLevelTypeDeclaration.h",
++    "inContextCache": false,
++    "name": "BTPTopLevelTypeDeclaration",
+     "superClasses": [
+-      "GBTMModel"
++      "GBTPTopLevelTypeDeclaration"
+     ],
+-    "cacheableSuperclass": "GBTMModel",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTOwnerDisambiguation": {
+-    "name": "BTOwnerDisambiguation",
++  "BTPTypeNameUser": {
++    "cacheableSuperclass": "GBTPTypeNameUser",
+     "fields": [
+       {
+-        "name": "id2IdMap_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< BTDeterministicId, BTDeterministicId >",
+-        "index": 0
++        "fieldType": "BTTypeClass",
++        "index": 0,
++        "name": "typeClass_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "headerFilePath": "BTSerializeParse/BTPTypeNameUser.h",
++    "inContextCache": false,
++    "name": "BTPTypeNameUser",
+     "superClasses": [
+-      "BTDisambiguationData"
++      "GBTPTypeNameUser"
+     ],
+-    "cacheableSuperclass": "BTDisambiguationData",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+   "BTPatternComputedData": {
+-    "name": "BTPatternComputedData",
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "instanceIdToTransform_",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "std::unordered_map< std::string, Eigen::Matrix4d >",
+-        "index": 0
++        "index": 0,
++        "name": "instanceIdToTransform_",
++        "skipInContext": false
+       }
+     ],
+     "headerFilePath": "BSGeometry/BTTransformComputedData.h",
++    "inContextCache": false,
++    "name": "BTPatternComputedData",
+     "superClasses": [
+       "BTFeatureSecondaryData",
+       "BTCacheable"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBuiltInSketch": {
+-    "name": "BTBuiltInSketch",
++  "BTPatternRecord": {
++    "cacheableSuperclass": "BTCopyRecord< ENTITY_TYPE >",
+     "fields": [
+       {
+-        "name": "sketchDef_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTMSketchPtr",
+-        "index": 0
+-      },
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "instanceName_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTPatternRecord.h",
++    "inContextCache": false,
++    "name": "BTPatternRecord",
++    "superClasses": [
++      "BTCopyRecord< ENTITY_TYPE >",
++      "BTPatternRecordBase"
++    ],
++    "templateParameters": [
++      [
++        "BTHistoryRecord::EntityType",
++        "ENTITY_TYPE"
++      ]
++    ]
++  },
++  "BTPropertiesManager": {
++    "cacheableSuperclass": "BTJournal",
++    "fields": [
+       {
+-        "name": "context_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBuiltInContextWeakPtr",
+-        "index": 1
++        "fieldType": "BTJournaledMap< std::string, BTOnePartPropertiesPtr >",
++        "index": 0,
++        "name": "idToProperties_",
++        "skipInContext": false
+       },
+       {
+-        "name": "initialGuess_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< std::string, std::vector< double > >",
+-        "index": 2
++        "fieldType": "BTJournaledMap< BTObjectId, BTPropertyComputedDataPtr >",
++        "index": 1,
++        "name": "nodeIdToComputedData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "faceIds_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< BTDeterministicId >",
+-        "index": 3
+-      },
++        "fieldType": "std::unordered_map< BTDeterministicId, BTOnePartPropertiesPtr >",
++        "index": 2,
++        "name": "postRegenPropertySnapshot_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTPropertiesManager.h",
++    "inContextCache": false,
++    "name": "BTPropertiesManager",
++    "superClasses": [
++      "BTJournal"
++    ],
++    "templateParameters": null
++  },
++  "BTQueryData": {
++    "cacheableSuperclass": "GBTQueryData",
++    "fields": [
+       {
+-        "name": "solved_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "bool",
+-        "index": 4
++        "fieldType": "std::vector< std::string >",
++        "index": 0,
++        "name": "deterministicIdsWithDerived_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BSGeometry/BTBuiltInSketch.h",
++    "headerFilePath": "BTSerializeUtils/BTQueryData.h",
++    "inContextCache": false,
++    "name": "BTQueryData",
+     "superClasses": [
+-      "BTBuiltInObject"
++      "GBTQueryData"
+     ],
+-    "cacheableSuperclass": "BTBuiltInObject",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTSingleDerivedRecord": {
+-    "name": "BTSingleDerivedRecord",
++  "BTQueryEvaluationDetails": {
++    "cacheableSuperclass": "GBTQueryEvaluationDetails",
+     "fields": [
+       {
+-        "name": "derivedFrom_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTDeterministicId",
+-        "index": 0
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "queryType_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "headerFilePath": "BTSerializeUtils/BTQueryEvaluationDetails.h",
++    "inContextCache": false,
++    "name": "BTQueryEvaluationDetails",
+     "superClasses": [
+-      "BTDerivedRecord"
++      "GBTQueryEvaluationDetails"
+     ],
+-    "cacheableSuperclass": "BTDerivedRecord",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPStatementVarDeclaration": {
+-    "name": "BTPStatementVarDeclaration",
++  "BTRValue": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "variable_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTVarId",
+-        "index": 0
++        "fieldType": "BTTagTypeConstPtr",
++        "index": 0,
++        "name": "typeTag_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPStatementVarDeclaration.h",
++    "headerFilePath": "BSLanguage/BTRValue.h",
++    "inContextCache": false,
++    "name": "BTRValue",
+     "superClasses": [
+-      "GBTPStatementVarDeclaration"
++      "BTValue"
+     ],
+-    "cacheableSuperclass": "GBTPStatementVarDeclaration",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTPExpressionFunction": {
+-    "name": "BTPExpressionFunction",
++  "BTRValueWithUnits": {
++    "cacheableSuperclass": "BTRValue",
+     "fields": [
+       {
+-        "name": "module_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTModuleDataWeakConstPtr",
+-        "index": 0
++        "fieldType": "double",
++        "index": 0,
++        "name": "value_",
++        "skipInContext": false
+       },
+       {
+-        "name": "bindings_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTBindings",
+-        "index": 1
++        "fieldType": "std::unordered_map< GBTBaseUnit, int >",
++        "index": 1,
++        "name": "unitSpec_",
++        "skipInContext": false
+       },
+       {
+-        "name": "captures_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCaptures",
+-        "index": 2
++        "fieldType": "BTTagTypeConstPtr",
++        "index": 2,
++        "name": "unitSpecTypeTag_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTSerializeParse/BTPExpressionFunction.h",
++    "headerFilePath": "BSLanguage/BTRValueWithUnits.h",
++    "inContextCache": false,
++    "name": "BTRValueWithUnits",
+     "superClasses": [
+-      "GBTPExpressionFunction"
++      "BTRValue"
+     ],
+-    "cacheableSuperclass": "GBTPExpressionFunction",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTNamingRecord": {
+-    "name": "BTNamingRecord",
++  "BTSingleDerivedRecord": {
++    "cacheableSuperclass": "BTDerivedRecord",
+     "fields": [
+       {
+-        "name": "name_",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 0
++        "fieldType": "BTDeterministicId",
++        "index": 0,
++        "name": "derivedFrom_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "BTModelState/BTNamingRecord.h",
++    "headerFilePath": "BTModelState/BTHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTSingleDerivedRecord",
+     "superClasses": [
+-      "BTSingleDerivedRecordWithType< GBTQueryType::NAMED >"
++      "BTDerivedRecord"
+     ],
+-    "cacheableSuperclass": "BTSingleDerivedRecordWithType< GBTQueryType::NAMED >",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTAutoCacheableTestData": {
+-    "name": "BTAutoCacheableTestData",
++  "BTSketchComputedData": {
++    "cacheableSuperclass": "GBTSketchComputedData",
+     "fields": [
+       {
+-        "name": "intField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
++        "fieldType": "std::vector< BTDimensionDisplayDataPtr >",
++        "index": 0,
++        "name": "dimensionData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "doubleField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 1
++        "fieldType": "std::unordered_map< std::string, BTSketchImageDisplayDataPtr >",
++        "index": 1,
++        "name": "imageData_",
++        "skipInContext": false
+       },
+       {
+-        "name": "stringVector",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::string >",
+-        "index": 2
++        "fieldType": "BTBSMatrixPtr",
++        "index": 2,
++        "name": "transformMatrix_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BTSerialize/BTSketchComputedData.h",
++    "inContextCache": false,
++    "name": "BTSketchComputedData",
+     "superClasses": [
+-      "BTCacheable"
++      "GBTSketchComputedData"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTMicroBenchmarkGen": {
+-    "name": "BTMicroBenchmarkGen",
++  "BTSplitRecord": {
++    "cacheableSuperclass": "BTSingleDerivedRecordWithType< GBTQueryType::SPLIT >",
+     "fields": [
+       {
+-        "name": "integer",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "floating",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "float",
+-        "index": 1
+-      },
+-      {
+-        "name": "doublePrecision",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 2
+-      },
+-      {
+-        "name": "boolean",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "bool",
+-        "index": 3
+-      },
+-      {
+-        "name": "stringField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 4
++        "index": 0,
++        "name": "isFromBackBody_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BTModelState/BTModifyRecord.h",
++    "inContextCache": false,
++    "name": "BTSplitRecord",
+     "superClasses": [
+-      "BTCacheable"
++      "BTSingleDerivedRecordWithType< GBTQueryType::SPLIT >"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTNanoBenchmarkGen": {
+-    "name": "BTNanoBenchmarkGen",
++  "BTSplitSurfaceIntersectionRecord": {
++    "cacheableSuperclass": "BTMultiDerivedRecordWithType< GBTQueryType::SPLIT_SURFACE_INTERSECT >",
+     "fields": [
+       {
+-        "name": "onlyField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
++        "fieldType": "bool",
++        "index": 0,
++        "name": "isFromBackBody_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BTModelState/BTSplitSurfaceIntersectionRecord.h",
++    "inContextCache": false,
++    "name": "BTSplitSurfaceIntersectionRecord",
+     "superClasses": [
+-      "BTCacheable"
++      "BTMultiDerivedRecordWithType< GBTQueryType::SPLIT_SURFACE_INTERSECT >"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTAutoCacheableTestClass1": {
+-    "name": "BTAutoCacheableTestClass1",
++  "BTStringIdentifiedHistoryRecord": {
++    "cacheableSuperclass": "BTHistoryRecord",
+     "fields": [
+       {
+-        "name": "intField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "floatField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "float",
+-        "index": 1
+-      },
+-      {
+-        "name": "stringVector",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::string >",
+-        "index": 2
+-      },
+-      {
+-        "name": "dataSharedPointer",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTAutoCacheableTestDataPtr",
+-        "index": 3
+-      },
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "stringIdentifier_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTStringIdentifiedHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTStringIdentifiedHistoryRecord",
++    "superClasses": [
++      "BTHistoryRecord",
++      "BTQueryTypeMixIn< QUERY_TYPE >"
++    ],
++    "templateParameters": [
++      [
++        "GBTQueryType",
++        "QUERY_TYPE"
++      ]
++    ]
++  },
++  "BTStringValue": {
++    "cacheableSuperclass": "BTRValue",
++    "fields": [
+       {
+-        "name": "dataPointerMap",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
+-        "index": 4
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "value_",
++        "skipInContext": false
+       },
+       {
+-        "name": "dataValueMap",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::unordered_map< int, BTAutoCacheableTestData >",
+-        "index": 5
+-      },
++        "fieldType": "int",
++        "index": 1,
++        "name": "enumIndex_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BSLanguage/BTRValue.h",
++    "inContextCache": false,
++    "name": "BTStringValue",
++    "superClasses": [
++      "BTRValue"
++    ],
++    "templateParameters": null
++  },
++  "BTSweptCapRecord": {
++    "cacheableSuperclass": "BTPrioritizeOriginalsRecord",
++    "fields": [
+       {
+-        "name": "oldFloatField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "float",
+-        "index": 6
++        "fieldType": "bool",
++        "index": 0,
++        "name": "isStart_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BTModelState/BTSweptHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTSweptCapRecord",
+     "superClasses": [
+-      "BTCacheable"
++      "BTPrioritizeOriginalsRecord"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTAutoCacheableTestClass2": {
+-    "name": "BTAutoCacheableTestClass2",
++  "BTSweptMidCapRecord": {
++    "cacheableSuperclass": "BTPrioritizeOriginalsRecord",
+     "fields": [
+       {
+-        "name": "intField",
+         "cacheable": true,
+-        "skipInContext": false,
+         "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "skip_floatField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< float >",
+-        "index": 1
+-      },
+-      {
+-        "name": "stringVector",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::string >",
+-        "index": 2
+-      },
+-      {
+-        "name": "skip_dataSharedPointer",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< BTAutoCacheableTestDataPtr >",
+-        "index": 3
+-      },
++        "index": 0,
++        "name": "pos_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTSweptHistoryRecords.h",
++    "inContextCache": false,
++    "name": "BTSweptMidCapRecord",
++    "superClasses": [
++      "BTPrioritizeOriginalsRecord"
++    ],
++    "templateParameters": null
++  },
++  "BTTagType": {
++    "cacheableSuperclass": null,
++    "fields": [
+       {
+-        "name": "dataPointerMap",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
+-        "index": 4
++        "fieldType": "std::string",
++        "index": 0,
++        "name": "typeName_",
++        "skipInContext": false
+       },
+       {
+-        "name": "skip_dataValueMap",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< std::unordered_map< int, BTAutoCacheableTestData > >",
+-        "index": 5
++        "fieldType": "bool",
++        "index": 1,
++        "name": "forExport_",
++        "skipInContext": false
+       },
+       {
+-        "name": "oldFloatField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "float",
+-        "index": 6
++        "fieldType": "bool",
++        "index": 2,
++        "name": "isEnum_",
++        "skipInContext": false
+       },
+       {
+-        "name": "newDoubleField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 7
++        "fieldType": "int",
++        "index": 3,
++        "name": "version_",
++        "skipInContext": false
+       },
+       {
+-        "name": "newPairField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::pair< float, std::string >",
+-        "index": 8
++        "fieldType": "std::string",
++        "index": 4,
++        "name": "elementId_",
++        "skipInContext": false
+       },
+       {
+-        "name": "lastIntField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 9
++        "fieldType": "std::string",
++        "index": 5,
++        "name": "moduleMicroversion_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BTSerializeParse/BTTagType.h",
++    "inContextCache": false,
++    "name": "BTTagType",
+     "superClasses": [
+-      "BTCacheable"
++      "BTCacheableValue"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBitwiseBaseClass": {
+-    "name": "BTBitwiseBaseClass",
++  "BTTessellationState": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "intField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "floatField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "float",
+-        "index": 1
+-      },
+-      {
+-        "name": "stringField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 2
++        "fieldType": "std::unordered_map< std::string, BTTessellatedEntityState >",
++        "index": 0,
++        "name": "deterministicIdToEntityState_",
++        "skipInContext": false
+       },
+       {
+-        "name": "mapField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::map< std::string, unsigned int >",
+-        "index": 3
++        "fieldType": "std::unordered_map< std::string, BTTessellatedBodyState >",
++        "index": 1,
++        "name": "deterministicIdToBodyState_",
++        "skipInContext": false
+       },
+       {
+-        "name": "skipField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< std::string >",
+-        "index": 4
++        "fieldType": "std::unordered_map< std::string, int >",
++        "index": 2,
++        "name": "featureToEntityCount_",
++        "skipInContext": false
+       },
+       {
+-        "name": "doubleField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 5
++        "fieldType": "std::unordered_map< std::string, std::vector< std::string > >",
++        "index": 3,
++        "name": "entityToFeature_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "headerFilePath": "BSLanguage/BTTessellationState.h",
++    "inContextCache": false,
++    "name": "BTTessellationState",
+     "superClasses": [
+       "BTCacheable"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBitwiseDerivedDerivedClass": {
+-    "name": "BTBitwiseDerivedDerivedClass",
++  "BTTopologicalDisambiguation": {
++    "cacheableSuperclass": "BTDisambiguationData",
+     "fields": [
+       {
+-        "name": "arrayField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::array< BTBitwiseDerivedClass, 2 >",
+-        "index": 0
++        "fieldType": "std::unordered_map< BTDeterministicId, std::set< IDAndSense > >",
++        "index": 0,
++        "name": "entities_",
++        "skipInContext": false
+       },
+       {
+-        "name": "setField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::map< int, BTBitwiseBaseClass >",
+-        "index": 1
++        "fieldType": "bool",
++        "index": 1,
++        "name": "edgeConnectivityOnly_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "headerFilePath": "BTModelState/BTHistoryRecordDisambiguation.h",
++    "inContextCache": false,
++    "name": "BTTopologicalDisambiguation",
+     "superClasses": [
+-      "BTBitwiseBaseClass"
++      "BTDisambiguationData"
+     ],
+-    "cacheableSuperclass": "BTBitwiseBaseClass",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTACSkipInContextCacheTest": {
+-    "name": "BTACSkipInContextCacheTest",
++  "BTTransformComputedData": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "integer",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "execStateInteger",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "int",
+-        "index": 1
++        "fieldType": "Eigen::Matrix4d",
++        "index": 0,
++        "name": "transform_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BSGeometry/BTTransformComputedData.h",
++    "inContextCache": false,
++    "name": "BTTransformComputedData",
+     "superClasses": [
++      "BTFeatureSecondaryData",
+       "BTCacheable"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTBitwiseDerivedClass": {
+-    "name": "BTBitwiseDerivedClass",
++  "BTTreeNodeOfEntriesImpl": {
++    "cacheableSuperclass": null,
+     "fields": [
+       {
+-        "name": "skipFieldBegin",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< int >",
+-        "index": 0
++        "fieldType": "std::pair< int, int >",
++        "index": 0,
++        "name": "indexRange_",
++        "skipInContext": false
+       },
+       {
+-        "name": "pointerField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::shared_ptr< BTBitwiseBaseClass >",
+-        "index": 1
++        "fieldType": "std::string",
++        "index": 1,
++        "name": "idComponent_",
++        "skipInContext": false
+       },
+       {
+-        "name": "notInContext",
+         "cacheable": true,
+-        "skipInContext": true,
+-        "fieldType": "std::string",
+-        "index": 2
++        "fieldType": "int",
++        "index": 2,
++        "name": "depthInTree_",
++        "skipInContext": false
+       },
+       {
+-        "name": "vectorField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::pair< double, float > >",
+-        "index": 3
++        "fieldType": "std::unordered_map< std::string, int >",
++        "index": 3,
++        "name": "idComponentToChildIdx_",
++        "skipInContext": false
+       },
+       {
+-        "name": "skipFieldEnd",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< int >",
+-        "index": 4
++        "fieldType": "std::unordered_map< std::string, int >",
++        "index": 4,
++        "name": "idComponentToEntryIdx_",
++        "skipInContext": false
+       },
+       {
+-        "name": "protectedField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 5
++        "fieldType": "std::vector< BTTreeNodeOfEntriesImplPtr >",
++        "index": 5,
++        "name": "children_",
++        "skipInContext": false
++      },
++      {
++        "cacheable": true,
++        "fieldType": "bool",
++        "index": 6,
++        "name": "skipOrderDisambiguation_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableBitwiseRegressionCheck.h",
++    "headerFilePath": "BTModelState/BTTreeNodeOfEntries.cpp",
++    "inContextCache": false,
++    "name": "BTTreeNodeOfEntriesImpl",
+     "superClasses": [
+-      "BTBitwiseBaseClass"
++      "BTCacheable"
+     ],
+-    "cacheableSuperclass": "BTBitwiseBaseClass",
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   },
+-  "BTAutoCacheableTestClass2Post102_100_5": {
+-    "name": "BTAutoCacheableTestClass2Post102_100_5",
++  "BTTreeNodeOfEntriesWrapper": {
++    "cacheableSuperclass": "BTTreeNodeOfEntries",
+     "fields": [
+       {
+-        "name": "intField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "int",
+-        "index": 0
+-      },
+-      {
+-        "name": "skip_floatField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< float >",
+-        "index": 1
+-      },
+-      {
+-        "name": "stringVector",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< std::string >",
+-        "index": 2
+-      },
+-      {
+-        "name": "skip_dataSharedPointer",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< BTAutoCacheableTestDataPtr >",
+-        "index": 3
+-      },
+-      {
+-        "name": "dataPointerMap",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::map< int, BTAutoCacheableTestDataPtr >",
+-        "index": 4
+-      },
+-      {
+-        "name": "skip_dataValueMap",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< std::unordered_map< int, BTAutoCacheableTestData > >",
+-        "index": 5
+-      },
+-      {
+-        "name": "skip_oldFloatField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "BTCacheableSkip< float >",
+-        "index": 6
+-      },
+-      {
+-        "name": "newDoubleField",
+-        "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "double",
+-        "index": 7
+-      },
+-      {
+-        "name": "newPairField",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::pair< float, std::string >",
+-        "index": 8
++        "fieldType": "BTTreeNodeOfEntriesImplPtr",
++        "index": 0,
++        "name": "tree_",
++        "skipInContext": false
+       },
+       {
+-        "name": "stringToReplaceLastInt",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::string",
+-        "index": 9
+-      },
++        "fieldType": "int",
++        "index": 1,
++        "name": "maxIndex_",
++        "skipInContext": false
++      }
++    ],
++    "headerFilePath": "BTModelState/BTTreeNodeOfEntries.cpp",
++    "inContextCache": false,
++    "name": "BTTreeNodeOfEntriesWrapper",
++    "superClasses": [
++      "BTTreeNodeOfEntries"
++    ],
++    "templateParameters": null
++  },
++  "BTValueInExecutionState": {
++    "cacheableSuperclass": "BTRValue",
++    "fields": [
+       {
+-        "name": "vectorToReplaceOldFloat",
+         "cacheable": true,
+-        "skipInContext": false,
+-        "fieldType": "std::vector< int >",
+-        "index": 10
++        "fieldType": "int",
++        "index": 0,
++        "name": "id_",
++        "skipInContext": false
+       }
+     ],
+-    "headerFilePath": "UnitTests/BTSerializationTests/BTAutoCacheableTestClasses.h",
++    "headerFilePath": "BSLanguage/BTRValue.h",
++    "inContextCache": false,
++    "name": "BTValueInExecutionState",
+     "superClasses": [
+-      "BTCacheable"
++      "BTRValue",
++      "BTCacheableExec"
+     ],
+-    "cacheableSuperclass": null,
+-    "templateParameters": null,
+-    "inContextCache": false
++    "templateParameters": null
+   }
+ }
+\ No newline at end of file

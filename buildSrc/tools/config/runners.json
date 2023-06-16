@@ -1,0 +1,13 @@
+{
+ "ms-android-1": {"ip": "208.52.182.166", "labels": ["ms-android", "mac-build"]},
+ "ms-android-2": {"ip": "208.52.182.244", "labels": ["ms-android", "mac-build"]},
+ "ms-build-1": {"ip": "208.52.185.65", "labels": ["ios-xcode12.0.1", "mac-build"]},
+ "ms-build-2": {"ip": "208.52.161.42", "labels": ["ios-xcode12.0.1", "mac-build"]},
+ "ms-build-3": {"ip": "208.52.190.88", "labels": ["ios-xcode12.0.1", "mac-build"]},
+ "ms-build-4": {"ip": "208.52.185.115", "labels": ["ios-xcode12.0.1", "mac-build"]},
+ "ms-build-5": {"ip": "208.52.182.206", "labels": ["ios-xcode12.0.1", "graphics-updatespecrepo", "mac-build"]},
+ "ms-build-6": {"ip": "208.52.189.243", "labels": ["ios-xcode12.0.1", "mac-build"]},
+ "ms-newton-1": {"ip": "208.52.161.27", "labels": ["ios-xcode12.0.1", "newton-build"]},
+ "ms-perf-ga1": {"ip": "208.52.170.155", "labels": []},
+ "ms-perf-ie1": {"ip": "207.254.31.166", "labels": []}
+}
