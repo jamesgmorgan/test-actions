@@ -1,0 +1,23 @@
+name: ccs
+
+on:
+  workflow_dispatch:
+    inputs:
+      tz:
+        description: "🚨 Obsolete, see: https://onshape.slack.com/archives/C01LS2S60M6/p1687527756840089 🚨"
+        default: "Don't press Run, read the text above"
+        required: true
+
+env:
+  USER: ${{ github.actor }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message
+        run: |
+          {
+           echo -e "This workflow is obsolete, visit this link for the new process:\n\n"
+           echo -e 'https://onshape.slack.com/archives/C01LS2S60M6/p1687527756840089\n'
+          } | tee $GITHUB_STEP_SUMMARY
